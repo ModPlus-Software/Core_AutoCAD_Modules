@@ -28,8 +28,6 @@
     <WarningLevel>4</WarningLevel>
     <PlatformTarget>AnyCPU</PlatformTarget>
     <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
-    <DocumentationFile>
-    </DocumentationFile>
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <!-- For AutoCAD versions -->
@@ -117,6 +115,11 @@
     <Compile Include="Helpers\LoadFunctionsHelper.cs" />
     <Compile Include="Helpers\RibbonHelpers.cs" />
     <Compile Include="Helpers\XDataHelpers.cs" />
+    <Compile Include="MiniPlugins\EditWipeout.cs" />
+    <Compile Include="MiniPlugins\MiniFunctionsContextMenuExtensions.cs" />
+    <Compile Include="MiniPlugins\NestedEntitiesByBlock.cs" />
+    <Compile Include="MiniPlugins\NestedEntitiesLayer.cs" />
+    <Compile Include="MiniPlugins\ViewPortBoundariesToModelSpace.cs" />
     <Compile Include="Windows\MiniPlugins\FastBlockSelection.xaml.cs">
       <DependentUpon>FastBlockSelection.xaml</DependentUpon>
     </Compile>
@@ -126,7 +129,7 @@
     <Compile Include="Windows\MiniPlugins\SelectLayer.xaml.cs">
       <DependentUpon>SelectLayer.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MiniFunctions.cs" />
+    <Compile Include="MiniPlugins\MiniFunctions.cs" />
     <Compile Include="ModPlus.cs" />
     <Compile Include="Helpers\GeometryHelpers.cs" />
     <Compile Include="mpDrawings.xaml.cs">

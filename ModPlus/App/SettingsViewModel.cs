@@ -15,6 +15,7 @@
     using ModPlusStyle;
     using ModPlusStyle.Controls.Dialogs;
     using Windows;
+    using MiniPlugins;
 
     /// <summary>
     /// Модель представления окна настроек

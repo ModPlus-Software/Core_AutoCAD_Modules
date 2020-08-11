@@ -6,6 +6,7 @@
     using ModPlusAPI;
     using ModPlusAPI.Mvvm;
     using Windows.MiniPlugins;
+    using MiniPlugins;
 
     /// <summary>
     /// Модель представления для окна настроек, отвечающая за мини-плагины
@@ -22,9 +23,9 @@
             {
                 UserConfigFile.SetValue("EntByBlockOCM", value.ToString(), true);
                 if (value)
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.EntByBlockObjectContextMenu.Attach();
+                    MiniFunctionsContextMenuExtensions.EntByBlockObjectContextMenu.Attach();
                 else
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.EntByBlockObjectContextMenu.Detach();
+                    MiniFunctionsContextMenuExtensions.EntByBlockObjectContextMenu.Detach();
             }
         }
 
@@ -38,9 +39,9 @@
             {
                 UserConfigFile.SetValue("NestedEntLayerOCM", value.ToString(), true);
                 if (value)
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.NestedEntLayerObjectContextMenu.Attach();
+                    MiniFunctionsContextMenuExtensions.NestedEntLayerObjectContextMenu.Attach();
                 else
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.NestedEntLayerObjectContextMenu.Detach();
+                    MiniFunctionsContextMenuExtensions.NestedEntLayerObjectContextMenu.Detach();
             }
         }
 
@@ -54,9 +55,9 @@
             {
                 UserConfigFile.SetValue("FastBlocksCM", value.ToString(), true);
                 if (value)
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Attach();
+                    MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Attach();
                 else
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Detach();
+                    MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Detach();
             }
         }
 
@@ -71,9 +72,9 @@
             {
                 UserConfigFile.SetValue("VPtoMS", value.ToString(), true);
                 if (value)
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Attach();
+                    MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Attach();
                 else
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Detach();
+                    MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Detach();
             }
         }
 
@@ -87,9 +88,9 @@
             {
                 UserConfigFile.SetValue("WipeoutEditOCM", value.ToString(), true);
                 if (value)
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.WipeoutEditObjectContextMenu.Attach();
+                    MiniFunctionsContextMenuExtensions.WipeoutEditObjectContextMenu.Attach();
                 else 
-                    MiniFunctions.MiniFunctionsContextMenuExtensions.WipeoutEditObjectContextMenu.Detach();
+                    MiniFunctionsContextMenuExtensions.WipeoutEditObjectContextMenu.Detach();
             }
         }
 

@@ -18,6 +18,7 @@
     using ModPlusAPI.UserInfo;
     using ModPlusAPI.Windows;
     using Windows;
+    using MiniPlugins;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     // ReSharper disable once UnusedMember.Global

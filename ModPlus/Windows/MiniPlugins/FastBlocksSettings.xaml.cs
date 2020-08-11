@@ -9,6 +9,7 @@
     using System.Xml.Linq;
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.Windows;
+    using global::ModPlus.MiniPlugins;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using Visibility = System.Windows.Visibility;
@@ -35,8 +36,8 @@
             var fastBlocksContextMenu = !bool.TryParse(UserConfigFile.GetValue("FastBlocksCM"), out var b) || b;
             if (fastBlocksContextMenu)
             {
-                MiniFunctions.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Detach();
-                MiniFunctions.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Attach();
+                global::ModPlus.MiniPlugins.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Detach();
+                global::ModPlus.MiniPlugins.MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Attach();
             }
         }
 
