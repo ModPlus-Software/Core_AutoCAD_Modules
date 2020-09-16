@@ -17,7 +17,7 @@
     {
         private const string LangItem = "AutocadDlls";
 
-        /// <summary>Вставить строкове значение в ячейку таблицы автокада</summary>
+        /// <summary>Вставить строковое значение в ячейку таблицы автокада</summary>
         /// <param name="firstStr">Первая строка. Замена разделителя действует только для неё</param>
         /// <param name="secondString">Вторая строка. Необязательно. Замена разделителя не действует</param>
         /// <param name="useSeparator">Использовать разделитель (для цифровых значений). Заменяет запятую на точку, а затем на текущий разделитель</param>
@@ -29,8 +29,8 @@
                 var ed = AcApp.DocumentManager.MdiActiveDocument.Editor;
                 using (AcApp.DocumentManager.MdiActiveDocument.LockDocument())
                 {
-                    var peo = new PromptEntityOptions("\n" + Language.GetItem(LangItem, "msg11"));
-                    peo.SetRejectMessage("\n" + Language.GetItem(LangItem, "msg13"));
+                    var peo = new PromptEntityOptions($"\n{Language.GetItem(LangItem, "msg11")}");
+                    peo.SetRejectMessage($"\n{Language.GetItem(LangItem, "msg13")}");
                     peo.AddAllowedClass(typeof(Table), false);
                     var per = ed.GetEntity(peo);
                     if (per.Status != PromptStatus.OK)
@@ -45,7 +45,7 @@
                         {
                             var entId = per.ObjectId;
                             var tbl = (Table)tr.GetObject(entId, OpenMode.ForWrite);
-                            var ppo = new PromptPointOptions("\n" + Language.GetItem(LangItem, "msg12"));
+                            var ppo = new PromptPointOptions($"\n{Language.GetItem(LangItem, "msg12")}");
                             var end = false;
                             var vector = new Vector3d(0.0, 0.0, 1.0);
                             while (end == false)
@@ -55,8 +55,7 @@
                                     return;
                                 try
                                 {
-                                    TableHitTestInfo tableHitTestInfo =
-                                        tbl.HitTest(ppr.Value, vector);
+                                    var tableHitTestInfo = tbl.HitTest(ppr.Value.TransformBy(ed.CurrentUserCoordinateSystem), vector);
                                     if (tableHitTestInfo.Type == TableHitTestType.Cell)
                                     {
                                         var cell = new Cell(tbl, tableHitTestInfo.Row, tableHitTestInfo.Column);
@@ -103,8 +102,8 @@
             var ed = doc.Editor;
             using (doc.LockDocument())
             {
-                var options = new PromptEntityOptions("\n" + Language.GetItem(LangItem, "msg11"));
-                options.SetRejectMessage("\n" + Language.GetItem(LangItem, "msg13"));
+                var options = new PromptEntityOptions($"\n{Language.GetItem(LangItem, "msg11")}");
+                options.SetRejectMessage($"\n{Language.GetItem(LangItem, "msg13")}");
                 options.AddAllowedClass(typeof(Table), false);
                 var entity = ed.GetEntity(options);
                 if (entity.Status == PromptStatus.OK)
@@ -113,7 +112,7 @@
                     {
                         var table = (Table)tr.GetObject(entity.ObjectId, OpenMode.ForWrite);
                         var selectedRow = 2;
-                        var ppo = new PromptPointOptions("\n" + Language.GetItem(LangItem, "msg12"));
+                        var ppo = new PromptPointOptions($"\n{Language.GetItem(LangItem, "msg12")}");
                         var end = false;
                         var vector = new Vector3d(0.0, 0.0, 1.0);
                         while (end == false)
@@ -123,7 +122,7 @@
                                 return;
                             try
                             {
-                                var tableHitTestInfo = table.HitTest(ppr.Value, vector);
+                                var tableHitTestInfo = table.HitTest(ppr.Value.TransformBy(ed.CurrentUserCoordinateSystem), vector);
                                 if (tableHitTestInfo.Type == TableHitTestType.Cell)
                                 {
                                     selectedRow = tableHitTestInfo.Row;
@@ -166,8 +165,8 @@
             var ed = doc.Editor;
             using (doc.LockDocument())
             {
-                var options = new PromptEntityOptions("\n" + Language.GetItem(LangItem, "msg11"));
-                options.SetRejectMessage("\n" + Language.GetItem(LangItem, "msg13"));
+                var options = new PromptEntityOptions($"\n{Language.GetItem(LangItem, "msg11")}");
+                options.SetRejectMessage($"\n{Language.GetItem(LangItem, "msg13")}");
                 options.AddAllowedClass(typeof(Table), false);
                 var entity = ed.GetEntity(options);
                 if (entity.Status == PromptStatus.OK)
@@ -188,7 +187,7 @@
                         }
                         else
                         {
-                            var ppo = new PromptPointOptions("\n" + Language.GetItem(LangItem, "msg15"));
+                            var ppo = new PromptPointOptions($"\n{Language.GetItem(LangItem, "msg15")}");
                             var end = false;
                             var vector = new Vector3d(0.0, 0.0, 1.0);
                             while (end == false)
@@ -198,7 +197,7 @@
                                     return;
                                 try
                                 {
-                                    var tableHitTestInfo = table.HitTest(ppr.Value, vector);
+                                    var tableHitTestInfo = table.HitTest(ppr.Value.TransformBy(ed.CurrentUserCoordinateSystem), vector);
                                     if (tableHitTestInfo.Type == TableHitTestType.Cell)
                                     {
                                         startRow = tableHitTestInfo.Row;
@@ -323,7 +322,7 @@
             var db = HostApplicationServices.WorkingDatabase;
             using (doc.LockDocument())
             {
-                var ppo = new PromptPointOptions("\n" + Language.GetItem(LangItem, "msg16")) { AllowNone = true };
+                var ppo = new PromptPointOptions($"\n{Language.GetItem(LangItem, "msg16")}") { AllowNone = true };
                 var ppr = ed.GetPoint(ppo);
                 if (ppr.Status != PromptStatus.OK)
                     return;
@@ -379,7 +378,7 @@
                         UserInputControls.NoZeroResponseAccepted |
                         UserInputControls.AcceptOtherInputString |
                         UserInputControls.NoNegativeResponseAccepted,
-                    Message = "\n" + Language.GetItem(LangItem, "msg8")
+                    Message = $"\n{Language.GetItem(LangItem, "msg8")}"
                 };
                 var acquirePoint = prompts.AcquirePoint(jigOpts);
                 if (_mActualPoint == acquirePoint.Value)
@@ -434,7 +433,7 @@
                     UseBasePoint = true,
                     UserInputControls = UserInputControls.Accept3dCoordinates |
                                         UserInputControls.GovernedByUCSDetect,
-                    Message = "\n" + Language.GetItem(LangItem, "msg8")
+                    Message = $"\n{Language.GetItem(LangItem, "msg8")}"
                 };
 
                 var res = prompts.AcquirePoint(jpo);

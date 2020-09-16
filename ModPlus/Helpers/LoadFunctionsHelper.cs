@@ -103,7 +103,7 @@
         private static string GetSmallDarkIcon(Assembly funcAssembly, string funcName)
         {
             var iconUri = string.Empty;
-            var iconName = funcName + "_16x16_dark.png";
+            var iconName = $"{funcName}_16x16_dark.png";
             if (ResourceExists(funcAssembly, iconName))
                 iconUri = $"pack://application:,,,/{funcAssembly.GetName().FullName};component/Resources/{iconName}";
             return iconUri;
@@ -112,7 +112,7 @@
         private static string GetBigDarkIcon(Assembly funcAssembly, string funcName)
         {
             var iconUri = string.Empty;
-            var iconName = funcName + "_32x32_dark.png";
+            var iconName = $"{funcName}_32x32_dark.png";
             if (ResourceExists(funcAssembly, iconName))
                 iconUri = $"pack://application:,,,/{funcAssembly.GetName().FullName};component/Resources/{iconName}";
             return iconUri;
@@ -126,7 +126,7 @@
         private static IEnumerable<string> GetResourcePaths(Assembly assembly)
         {
             var culture = System.Threading.Thread.CurrentThread.CurrentCulture;
-            var resourceName = assembly.GetName().Name + ".g";
+            var resourceName = $"{assembly.GetName().Name}.g";
             var resourceManager = new ResourceManager(resourceName, assembly);
             var resKeys = new List<string>();
             try
@@ -172,7 +172,7 @@
                 foreach (var file in Directory.GetFiles(funcDir, "*.dll", SearchOption.TopDirectoryOnly))
                 {
                     var fileInfo = new FileInfo(file);
-                    if (fileInfo.Name.Equals(pluginName + "_" + VersionData.CurrentCadVersion + ".dll"))
+                    if (fileInfo.Name.Equals($"{pluginName}_{VersionData.CurrentCadVersion}.dll"))
                     {
                         fileName = file;
                         break;
@@ -384,7 +384,7 @@
         private static void CommandButtonClick(object sender, RoutedEventArgs e)
         {
             AcApp.DocumentManager.MdiActiveDocument.SendStringToExecute(
-                "_" + ((Button)sender).Name + " ",
+                $"_{((Button)sender).Name} ",
                 false, false, false);
         }
     }

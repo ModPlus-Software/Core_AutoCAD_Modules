@@ -27,7 +27,7 @@
                 using (AcApp.DocumentManager.MdiActiveDocument.LockDocument())
                 {
                     var ed = AcApp.DocumentManager.MdiActiveDocument.Editor;
-                    var pdo = new PromptDistanceOptions("\n" + Language.GetItem(LangItem, "msg10"));
+                    var pdo = new PromptDistanceOptions($"\n{Language.GetItem(LangItem, "msg10")}");
                     var pdr = ed.GetDistance(pdo);
                     return pdr.Status != PromptStatus.OK ? double.NaN : pdr.Value;
                 }
@@ -59,7 +59,7 @@
                 {
                     var selOpts = new PromptSelectionOptions
                     {
-                        MessageForAdding = "\n" + Language.GetItem(LangItem, "msg1")
+                        MessageForAdding = $"\n{Language.GetItem(LangItem, "msg1")}"
                     };
                     TypedValue[] values =
                     {
@@ -185,7 +185,7 @@
                     var selOpts = new PromptSelectionOptions
                     {
                         MessageForAdding =
-                            "\n" + Language.GetItem(LangItem, "msg1")
+                            $"\n{Language.GetItem(LangItem, "msg1")}"
                     };
                     TypedValue[] values =
                     {

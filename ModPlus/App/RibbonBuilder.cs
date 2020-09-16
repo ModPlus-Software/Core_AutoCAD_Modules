@@ -527,8 +527,8 @@
                     "mpUserInfo",
                     Language.GetItem(LangItem, "h56"),
                     _colorTheme == 1
-                        ? "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/UserInfo_32x32.png"
-                        : "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/UserInfo_32x32_dark.png",
+                        ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/UserInfo_32x32.png"
+                        : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/UserInfo_32x32_dark.png",
                     Language.GetItem(LangItem, "h56"),
                     Orientation.Vertical,
                     string.Empty,
@@ -540,8 +540,8 @@
                 "mpSettings",
                 Language.GetItem(LangItem, "h12"),
                 _colorTheme == 1
-                    ? "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/HelpBt.png"
-                    : "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/HelpBt_dark.png",
+                    ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/HelpBt.png"
+                    : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/HelpBt_dark.png",
                 Language.GetItem(LangItem, "h41"),
                 Orientation.Vertical,
                 Language.GetItem(LangItem, "h42"),
@@ -569,11 +569,11 @@
                     "mpShowProductIcons",
                     Language.GetItem(LangItem, "h46"),
                     _colorTheme == 1
-                        ? "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/mpShowProductIcons_16x16.png"
-                        : "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/mpShowProductIcons_16x16_dark.png",
+                        ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcons_16x16.png"
+                        : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcons_16x16_dark.png",
                     Language.GetItem(LangItem, "h37"),
                     Language.GetItem(LangItem, "h38"),
-                    "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/mpShowProductIcon.png", "help/mpsettings"));
+                    $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcon.png", "help/mpsettings"));
             ribRowPanel.Items.Add(new RibbonRowBreak());
 
             ribRowPanel.Items.Add(
@@ -581,8 +581,8 @@
                     "mpHideProductIcons",
                     Language.GetItem(LangItem, "h47"),
                     _colorTheme == 1
-                        ? "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/mpHideProductIcons_16x16.png"
-                        : "pack://application:,,,/Modplus_" + VersionData.CurrentCadVersion + ";component/Resources/mpHideProductIcons_16x16_dark.png",
+                        ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpHideProductIcons_16x16.png"
+                        : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpHideProductIcons_16x16_dark.png",
                     Language.GetItem(LangItem, "h39"),
                     string.Empty,
                     string.Empty, 
