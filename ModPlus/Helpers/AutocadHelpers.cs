@@ -1,9 +1,11 @@
 ﻿namespace ModPlus.Helpers
 {
     using System;
+    using System.Collections.Generic;
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Geometry;
+    using Model;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
@@ -11,6 +13,8 @@
     /// <summary>Различные вспомогательные методы для работы в AutoCAD</summary>
     public static class AutocadHelpers
     {
+        private const string LangItem = "AutocadDlls";
+
         /// <summary>Стандартные стрелки AutoCAD</summary>
         public enum StandardArrowhead
         {
@@ -246,8 +250,53 @@
             if (editor.IsQuiescent)
                 return true;
 
-            MessageBox.Show(Language.GetItem("AutocadDlls", "msg23"), MessageBoxIcon.Alert);
+            MessageBox.Show(Language.GetItem(LangItem, "msg23"), MessageBoxIcon.Alert);
             return false;
+        }
+
+        /// <summary>
+        /// Возвращает список оберток для весов линий с учетом локализации
+        /// </summary>
+        /// <param name="includeByDefault">Включить "По умолчанию"</param>
+        public static List<LineWeightWrapper> GetLineWeights(bool includeByDefault)
+        {
+            var mm = Language.GetItem(LangItem, "mm");
+            
+            var l = new List<LineWeightWrapper>();
+            if (includeByDefault)
+                l.Add(new LineWeightWrapper(Language.GetItem(LangItem, "def"), LineWeight.ByLineWeightDefault));
+            
+            l.AddRange(new List<LineWeightWrapper>
+            {
+                new LineWeightWrapper(Language.GetItem(LangItem, "bl"), LineWeight.ByLayer),
+                new LineWeightWrapper(Language.GetItem(LangItem, "bb"), LineWeight.ByBlock),
+                new LineWeightWrapper($"0.00 {mm}", LineWeight.LineWeight000),
+                new LineWeightWrapper($"0.05 {mm}", LineWeight.LineWeight005),
+                new LineWeightWrapper($"0.09 {mm}", LineWeight.LineWeight009),
+                new LineWeightWrapper($"0.13 {mm}", LineWeight.LineWeight013),
+                new LineWeightWrapper($"0.15 {mm}", LineWeight.LineWeight015),
+                new LineWeightWrapper($"0.18 {mm}", LineWeight.LineWeight018),
+                new LineWeightWrapper($"0.20 {mm}", LineWeight.LineWeight020),
+                new LineWeightWrapper($"0.25 {mm}", LineWeight.LineWeight025),
+                new LineWeightWrapper($"0.30 {mm}", LineWeight.LineWeight030),
+                new LineWeightWrapper($"0.35 {mm}", LineWeight.LineWeight035),
+                new LineWeightWrapper($"0.40 {mm}", LineWeight.LineWeight040),
+                new LineWeightWrapper($"0.50 {mm}", LineWeight.LineWeight050),
+                new LineWeightWrapper($"0.53 {mm}", LineWeight.LineWeight053),
+                new LineWeightWrapper($"0.60 {mm}", LineWeight.LineWeight060),
+                new LineWeightWrapper($"0.70 {mm}", LineWeight.LineWeight070),
+                new LineWeightWrapper($"0.80 {mm}", LineWeight.LineWeight080),
+                new LineWeightWrapper($"0.90 {mm}", LineWeight.LineWeight090),
+                new LineWeightWrapper($"1.00 {mm}", LineWeight.LineWeight100),
+                new LineWeightWrapper($"1.06 {mm}", LineWeight.LineWeight106),
+                new LineWeightWrapper($"1.20 {mm}", LineWeight.LineWeight120),
+                new LineWeightWrapper($"1.40 {mm}", LineWeight.LineWeight140),
+                new LineWeightWrapper($"1.58 {mm}", LineWeight.LineWeight158),
+                new LineWeightWrapper($"2.00 {mm}", LineWeight.LineWeight200),
+                new LineWeightWrapper($"2.11 {mm}", LineWeight.LineWeight211),
+            });
+
+            return l;
         }
     }
 }

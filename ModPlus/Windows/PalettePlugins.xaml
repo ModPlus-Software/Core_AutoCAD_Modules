@@ -18,11 +18,11 @@
             <RowDefinition Height="*"></RowDefinition>
         </Grid.RowDefinitions>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
-            <ColumnDefinition Width="Auto"></ColumnDefinition>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <Canvas x:Key="AppbarSettings" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
@@ -91,8 +91,8 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="4"
-                          VerticalScrollBarVisibility="Auto" Background="White">
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5"
+                      VerticalScrollBarVisibility="Auto" Background="White">
             <ScrollViewer.Resources>
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ModPlusFlatButton}">
                     <Setter Property="Foreground" Value="{DynamicResource BlackBrush}"></Setter>

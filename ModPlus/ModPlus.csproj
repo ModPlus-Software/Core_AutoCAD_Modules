@@ -120,6 +120,7 @@
     <Compile Include="MiniPlugins\NestedEntitiesByBlock.cs" />
     <Compile Include="MiniPlugins\NestedEntitiesLayer.cs" />
     <Compile Include="MiniPlugins\ViewPortBoundariesToModelSpace.cs" />
+    <Compile Include="Model\LineWeightWrapper.cs" />
     <Compile Include="Windows\MiniPlugins\FastBlockSelection.xaml.cs">
       <DependentUpon>FastBlockSelection.xaml</DependentUpon>
     </Compile>
