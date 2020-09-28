@@ -13,7 +13,7 @@
         /// Запуск окна настроек
         /// </summary>
         [CommandMethod("ModPlus", "mpSettings", CommandFlags.Modal)]
-        public void Main()
+        public static void OpenSettings()
         {
             try
             {

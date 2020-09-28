@@ -376,8 +376,7 @@
         // Вызов окна настроек ModPlus
         private void BtMpSettings_OnClick(object sender, RoutedEventArgs e)
         {
-            var win = new SettingsWindow();
-            win.ShowDialog();
+            MainSettingsCommand.OpenSettings();
         }
 
         // start fields function
