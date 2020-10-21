@@ -36,54 +36,63 @@
     <DefineConstants>TRACE;A2013</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2013</AssemblyName>
+    <DocumentationFile>bin\x64\A2013\ModPlus_2013.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2014|x64'">
     <OutputPath>bin\x64\A2014\</OutputPath>
     <DefineConstants>TRACE;A2014</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2014</AssemblyName>
+    <DocumentationFile>bin\x64\A2014\ModPlus_2014.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2015|x64'">
     <OutputPath>bin\x64\A2015\</OutputPath>
     <DefineConstants>TRACE;A2015</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2015</AssemblyName>
+    <DocumentationFile>bin\x64\A2015\ModPlus_2015.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2016|x64'">
     <OutputPath>bin\x64\A2016\</OutputPath>
     <DefineConstants>TRACE;A2016</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2016</AssemblyName>
+    <DocumentationFile>bin\x64\A2016\ModPlus_2016.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2017|x64'">
     <OutputPath>bin\x64\A2017\</OutputPath>
     <DefineConstants>TRACE;A2017</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2017</AssemblyName>
+    <DocumentationFile>bin\x64\A2017\ModPlus_2018.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2018|x64'">
     <OutputPath>bin\x64\A2018\</OutputPath>
     <DefineConstants>TRACE;A2018</DefineConstants>
     <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2018</AssemblyName>
+    <DocumentationFile>bin\x64\A2018\ModPlus_2018.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2019|x64'">
     <OutputPath>bin\x64\A2019\</OutputPath>
     <DefineConstants>TRACE;A2019</DefineConstants>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2019</AssemblyName>
+    <DocumentationFile>bin\x64\A2019\ModPlus_2019.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2020|x64'">
     <OutputPath>bin\x64\A2020\</OutputPath>
     <DefineConstants>TRACE;A2020</DefineConstants>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2020</AssemblyName>
+    <DocumentationFile>bin\x64\A2020\ModPlus_2020.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2021|x64'">
     <OutputPath>bin\x64\A2021\</OutputPath>
     <DefineConstants>TRACE;A2021</DefineConstants>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2021</AssemblyName>
+    <DocumentationFile>bin\x64\A2021\ModPlus_2021.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="PresentationCore" />
@@ -340,7 +349,8 @@
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>
-    </PostBuildEvent>
+    <PostBuildEvent>if $(ConfigurationName) == Debug (
+    "$(ModPlusPostBuild)" "ExtDll" "$(TargetPath)"
+)</PostBuildEvent>
   </PropertyGroup>
 </Project>

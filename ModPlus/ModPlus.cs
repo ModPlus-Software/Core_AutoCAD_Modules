@@ -12,13 +12,13 @@
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Runtime;
     using Helpers;
+    using MiniPlugins;
     using ModPlusAPI;
     using ModPlusAPI.Interfaces;
     using ModPlusAPI.LicenseServer;
     using ModPlusAPI.UserInfo;
     using ModPlusAPI.Windows;
     using Windows;
-    using MiniPlugins;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     // ReSharper disable once UnusedMember.Global
@@ -88,8 +88,11 @@
                 // Строим: ленту, меню, плавающее меню
                 // Загрузка ленты
                 Autodesk.Windows.ComponentManager.ItemInitialized += ComponentManager_ItemInitialized;
+                
                 if (ModPlusAPI.Variables.Palette)
                     MpPalette.CreatePalette(false);
+
+                AcApp.SystemVariableChanged += AcAppOnSystemVariableChanged;
 
                 // Загрузка основного меню (с проверкой значения из файла настроек)
                 FloatMenuCommand.LoadMainMenu();
@@ -139,7 +142,7 @@
                 ExceptionBox.Show(exception);
             }
         }
-
+        
         /// <inheritdoc/>
         public void Terminate()
         {
@@ -284,20 +287,34 @@
         /// </summary>
         private static void ComponentManager_ItemInitialized(object sender, Autodesk.Windows.RibbonItemEventArgs e)
         {
-            // now one Ribbon item is initialized, but the Ribbon control
-            // may not be available yet, so check if before
             if (Autodesk.Windows.ComponentManager.Ribbon == null)
                 return;
-
-            // ok, create Ribbon
+            
+            Autodesk.Windows.ComponentManager.Ribbon.BackgroundRenderFinished += RibbonOnBackgroundRenderFinished;
+            
             if (ModPlusAPI.Variables.Ribbon)
                 RibbonBuilder.BuildRibbon();
             else
                 RibbonBuilder.RemoveRibbon();
 
-            // and remove the event handler
-            Autodesk.Windows.ComponentManager.ItemInitialized -=
-                ComponentManager_ItemInitialized;
+            Autodesk.Windows.ComponentManager.ItemInitialized -= ComponentManager_ItemInitialized;
+        }
+
+        private static void RibbonOnBackgroundRenderFinished(object sender, EventArgs e)
+        {
+            if (ModPlusAPI.Variables.Ribbon)
+                RibbonBuilder.BuildRibbon();
+            else
+                RibbonBuilder.RemoveRibbon();
+        }
+
+        private void AcAppOnSystemVariableChanged(object sender, SystemVariableChangedEventArgs e)
+        {
+            if (e.Name.Equals("WSCURRENT"))
+            {
+                if (ModPlusAPI.Variables.Palette)
+                    MpPalette.CreatePalette(false);
+            }
         }
 
         /// <summary>
