@@ -64,7 +64,7 @@
     <DefineConstants>TRACE;A2017</DefineConstants>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <AssemblyName>$(AssemblyName)_2017</AssemblyName>
-    <DocumentationFile>bin\x64\A2017\ModPlus_2018.xml</DocumentationFile>
+    <DocumentationFile>bin\x64\A2017\ModPlus_2017.xml</DocumentationFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2018|x64'">
     <OutputPath>bin\x64\A2018\</OutputPath>
