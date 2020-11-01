@@ -14,11 +14,11 @@
     using Helpers;
     using MiniPlugins;
     using ModPlusAPI;
-    using ModPlusAPI.Interfaces;
     using ModPlusAPI.LicenseServer;
     using ModPlusAPI.UserInfo;
     using ModPlusAPI.Windows;
     using Windows;
+    using ModPlusAPI.Enums;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     // ReSharper disable once UnusedMember.Global
@@ -64,7 +64,8 @@
                     return;
                 }
 
-                Statistic.SendPluginStarting("AutoCAD", VersionData.CurrentCadVersion);
+                Statistic.SendModuleLoaded("AutoCAD", VersionData.CurrentCadVersion);
+
                 ed.WriteMessage("\n***************************");
                 ed.WriteMessage($"\n{Language.GetItem(LangItem, "p4")}");
                 if (!_quiteLoad)
@@ -257,17 +258,17 @@
                                     if (!_quiteLoad)
                                         ed.WriteMessage($"\n* {Language.GetItem(LangItem, "p15")} {functionKeyName}");
                                     var localFuncAssembly = Assembly.LoadFrom(file);
-                                    LoadFunctionsHelper.GetDataFromFunctionInterface(localFuncAssembly);
+                                    LoadPluginsHelper.GetDataFromFunctionInterface(localFuncAssembly);
                                 }
                                 else
                                 {
-                                    var foundedFile = LoadFunctionsHelper.FindFile(functionKeyName);
+                                    var foundedFile = LoadPluginsHelper.FindFile(functionKeyName);
                                     if (!string.IsNullOrEmpty(foundedFile) && File.Exists(foundedFile))
                                     {
                                         if (!_quiteLoad)
                                             ed.WriteMessage($"\n* {Language.GetItem(LangItem, "p15")} {functionKeyName}");
                                         var localFuncAssembly = Assembly.LoadFrom(foundedFile);
-                                        LoadFunctionsHelper.GetDataFromFunctionInterface(localFuncAssembly);
+                                        LoadPluginsHelper.GetDataFromFunctionInterface(localFuncAssembly);
                                     }
                                 }
                             }

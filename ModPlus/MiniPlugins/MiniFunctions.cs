@@ -2,16 +2,11 @@
 namespace ModPlus.MiniPlugins
 {
     using System;
-    using System.Runtime.InteropServices;
-    using Windows.MiniPlugins;
     using Autodesk.AutoCAD.ApplicationServices;
-    using Autodesk.AutoCAD.Colors;
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
-    using Autodesk.AutoCAD.GraphicsInterface;
     using ModPlusAPI;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
-    using Polyline = Autodesk.AutoCAD.DatabaseServices.Polyline;
 
     /// <summary>
     /// Мини-функции
@@ -45,8 +40,8 @@ namespace ModPlus.MiniPlugins
                 MiniFunctionsContextMenuExtensions.FastBlockContextMenu.Detach();
 
             // VP to MS
-            var VPtoMSObjConMen = !bool.TryParse(UserConfigFile.GetValue("VPtoMS"), out b) || b;
-            if (VPtoMSObjConMen)
+            var vPtoMSObjConMen = !bool.TryParse(UserConfigFile.GetValue("VPtoMS"), out b) || b;
+            if (vPtoMSObjConMen)
                 MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Attach();
             else
                 MiniFunctionsContextMenuExtensions.VPtoMSObjectContextMenu.Detach();

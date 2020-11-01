@@ -116,12 +116,12 @@
                         if (string.IsNullOrEmpty(funcNameAttr))
                             continue;
 
-                        var loadedFunction = LoadFunctionsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(funcNameAttr));
+                        var loadedFunction = LoadPluginsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(funcNameAttr));
                         if (loadedFunction == null)
                             continue;
 
                         expStck.Children.Add(
-                            WPFMenuesHelper.AddButton(
+                            WPFMenuHelper.AddButton(
                                 this,
                                 loadedFunction.Name,
                                 ModPlusAPI.Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.LName),
@@ -129,14 +129,14 @@
                                 ModPlusAPI.Language.GetFunctionShortDescription(loadedFunction.Name, loadedFunction.Description),
                                 ModPlusAPI.Language.GetFunctionFullDescription(loadedFunction.Name, loadedFunction.FullDescription),
                                 loadedFunction.ToolTipHelpImage, true));
-                        if (loadedFunction.SubFunctionsNames.Any())
+                        if (loadedFunction.SubPluginsNames.Any())
                         {
-                            for (int i = 0; i < loadedFunction.SubFunctionsNames.Count; i++)
+                            for (int i = 0; i < loadedFunction.SubPluginsNames.Count; i++)
                             {
-                                expStck.Children.Add(WPFMenuesHelper.AddButton(
+                                expStck.Children.Add(WPFMenuHelper.AddButton(
                                     this,
-                                    loadedFunction.SubFunctionsNames[i],
-                                    ModPlusAPI.Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubFunctionsLNames[i], i + 1),
+                                    loadedFunction.SubPluginsNames[i],
+                                    ModPlusAPI.Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubPluginsLNames[i], i + 1),
                                     loadedFunction.SubBigIconsUrl[i],
                                     ModPlusAPI.Language.GetFunctionShortDescription(loadedFunction.Name, loadedFunction.SubDescriptions[i], i + 1),
                                     ModPlusAPI.Language.GetFunctionFullDescription(loadedFunction.Name, loadedFunction.SubFullDescriptions[i], i + 1),
@@ -149,11 +149,11 @@
                             var subFuncNameAttr = subFunc.Attribute("Name")?.Value;
                             if (string.IsNullOrEmpty(subFuncNameAttr))
                                 continue;
-                            var loadedSubFunction = LoadFunctionsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(subFuncNameAttr));
+                            var loadedSubFunction = LoadPluginsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(subFuncNameAttr));
                             if (loadedSubFunction == null)
                                 continue;
                             expStck.Children.Add(
-                                WPFMenuesHelper.AddButton(
+                                WPFMenuHelper.AddButton(
                                     this,
                                     loadedSubFunction.Name,
                                     ModPlusAPI.Language.GetFunctionLocalName(loadedSubFunction.Name, loadedSubFunction.LName),
@@ -388,7 +388,7 @@
 
         private void FillFieldsFunction()
         {
-            _hasFieldsFunction = LoadFunctionsHelper.HasStampsPlugin();
+            _hasFieldsFunction = LoadPluginsHelper.HasStampsPlugin();
             BtFields.Visibility = _hasFieldsFunction ? Visibility.Visible : Visibility.Collapsed;
         }
 

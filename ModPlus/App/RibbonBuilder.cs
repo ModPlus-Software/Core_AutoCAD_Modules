@@ -176,9 +176,9 @@
                             var fNameAttr = func.Attribute("Name")?.Value;
                             if (string.IsNullOrEmpty(fNameAttr))
                                 continue;
-                            if (LoadFunctionsHelper.LoadedFunctions.Any(x => x.Name.Equals(fNameAttr)))
+                            if (LoadPluginsHelper.LoadedFunctions.Any(x => x.Name.Equals(fNameAttr)))
                             {
-                                var loadedFunction = LoadFunctionsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(fNameAttr));
+                                var loadedFunction = LoadPluginsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(fNameAttr));
                                 if (loadedFunction == null)
                                     continue;
                                 hasFunctions = true;
@@ -227,9 +227,9 @@
                                         // Затем добавляем подфункции
                                         foreach (var subFunc in func.Elements("SubFunction"))
                                         {
-                                            if (LoadFunctionsHelper.LoadedFunctions.Any(x => x.Name.Equals(subFunc.Attribute("Name")?.Value)))
+                                            if (LoadPluginsHelper.LoadedFunctions.Any(x => x.Name.Equals(subFunc.Attribute("Name")?.Value)))
                                             {
-                                                var loadedSubFunction = LoadFunctionsHelper.LoadedFunctions
+                                                var loadedSubFunction = LoadPluginsHelper.LoadedFunctions
                                                     .FirstOrDefault(x => x.Name.Equals(subFunc.Attribute("Name")?.Value));
                                                 if (loadedSubFunction == null)
                                                     continue;
@@ -249,7 +249,7 @@
                                     }
 
                                     // Если в конфигурации меню не прописано наличие подфункций, то проверяем, что они могут быть в самой функции
-                                    else if (loadedFunction.SubFunctionsNames.Any())
+                                    else if (loadedFunction.SubPluginsNames.Any())
                                     {
                                         // Создаем SplitButton
                                         var risSplitBtn = new RibbonSplitButton
@@ -278,11 +278,11 @@
                                         risSplitBtn.Current = ribBtn;
 
                                         // Затем добавляем подфункции
-                                        for (int i = 0; i < loadedFunction.SubFunctionsNames.Count; i++)
+                                        for (int i = 0; i < loadedFunction.SubPluginsNames.Count; i++)
                                         {
                                             risSplitBtn.Items.Add(RibbonHelpers.AddButton(
-                                                loadedFunction.SubFunctionsNames[i],
-                                                Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubFunctionsLNames[i], i + 1),
+                                                loadedFunction.SubPluginsNames[i],
+                                                Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubPluginsLNames[i], i + 1),
                                                 GetSmallIconForSubFunction(loadedFunction, i),
                                                 GetBigIconForSubFunction(loadedFunction, i),
                                                 Language.GetFunctionShortDescription(loadedFunction.Name, loadedFunction.SubDescriptions[i], i + 1),
@@ -361,9 +361,9 @@
                                         // Затем добавляем подфункции
                                         foreach (var subFunc in func.Elements("SubFunction"))
                                         {
-                                            if (LoadFunctionsHelper.LoadedFunctions.Any(x => x.Name.Equals(subFunc.Attribute("Name")?.Value)))
+                                            if (LoadPluginsHelper.LoadedFunctions.Any(x => x.Name.Equals(subFunc.Attribute("Name")?.Value)))
                                             {
-                                                var loadedSubFunction = LoadFunctionsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(subFunc.Attribute("Name")?.Value));
+                                                var loadedSubFunction = LoadPluginsHelper.LoadedFunctions.FirstOrDefault(x => x.Name.Equals(subFunc.Attribute("Name")?.Value));
                                                 if (loadedSubFunction == null)
                                                     continue;
                                                 risSplitBtn.Items.Add(RibbonHelpers.AddBigButton(
@@ -381,7 +381,7 @@
                                     }
 
                                     // Если в конфигурации меню не прописано наличие подфункций, то проверяем, что они могут быть в самой функции
-                                    else if (loadedFunction.SubFunctionsNames.Any())
+                                    else if (loadedFunction.SubPluginsNames.Any())
                                     {
                                         // Создаем SplitButton
                                         var risSplitBtn = new RibbonSplitButton
@@ -409,11 +409,11 @@
                                         risSplitBtn.Current = ribBtn;
 
                                         // Затем добавляем подфункции
-                                        for (int i = 0; i < loadedFunction.SubFunctionsNames.Count; i++)
+                                        for (int i = 0; i < loadedFunction.SubPluginsNames.Count; i++)
                                         {
                                             risSplitBtn.Items.Add(RibbonHelpers.AddBigButton(
-                                                loadedFunction.SubFunctionsNames[i],
-                                                Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubFunctionsLNames[i], i + 1),
+                                                loadedFunction.SubPluginsNames[i],
+                                                Language.GetFunctionLocalName(loadedFunction.Name, loadedFunction.SubPluginsLNames[i], i + 1),
                                                 GetBigIconForSubFunction(loadedFunction, i),
                                                 Language.GetFunctionShortDescription(loadedFunction.Name, loadedFunction.SubDescriptions[i], i + 1),
                                                 Orientation.Horizontal,
@@ -461,48 +461,48 @@
             }
         }
 
-        private static string GetSmallIcon(LoadedFunction loadedFunction)
+        private static string GetSmallIcon(LoadedPlugin loadedPlugin)
         {
             if (_colorTheme == 0)
             {
-                if (!string.IsNullOrEmpty(loadedFunction.SmallDarkIconUrl))
-                    return loadedFunction.SmallDarkIconUrl;
+                if (!string.IsNullOrEmpty(loadedPlugin.SmallDarkIconUrl))
+                    return loadedPlugin.SmallDarkIconUrl;
             }
 
-            return loadedFunction.SmallIconUrl;
+            return loadedPlugin.SmallIconUrl;
         }
 
-        private static string GetBigIcon(LoadedFunction loadedFunction)
+        private static string GetBigIcon(LoadedPlugin loadedPlugin)
         {
             if (_colorTheme == 0)
             {
-                if (!string.IsNullOrEmpty(loadedFunction.BigDarkIconUrl))
-                    return loadedFunction.BigDarkIconUrl;
+                if (!string.IsNullOrEmpty(loadedPlugin.BigDarkIconUrl))
+                    return loadedPlugin.BigDarkIconUrl;
             }
 
-            return loadedFunction.BigIconUrl;
+            return loadedPlugin.BigIconUrl;
         }
 
-        private static string GetSmallIconForSubFunction(LoadedFunction loadedFunction, int i)
+        private static string GetSmallIconForSubFunction(LoadedPlugin loadedPlugin, int i)
         {
             if (_colorTheme == 0)
             {
-                if (!string.IsNullOrEmpty(loadedFunction.SubSmallDarkIconsUrl[i]))
-                    return loadedFunction.SubSmallDarkIconsUrl[i];
+                if (!string.IsNullOrEmpty(loadedPlugin.SubSmallDarkIconsUrl[i]))
+                    return loadedPlugin.SubSmallDarkIconsUrl[i];
             }
 
-            return loadedFunction.SubSmallIconsUrl[i];
+            return loadedPlugin.SubSmallIconsUrl[i];
         }
 
-        private static string GetBigIconForSubFunction(LoadedFunction loadedFunction, int i)
+        private static string GetBigIconForSubFunction(LoadedPlugin loadedPlugin, int i)
         {
             if (_colorTheme == 0)
             {
-                if (!string.IsNullOrEmpty(loadedFunction.SubBigDarkIconsUrl[i]))
-                    return loadedFunction.SubBigDarkIconsUrl[i];
+                if (!string.IsNullOrEmpty(loadedPlugin.SubBigDarkIconsUrl[i]))
+                    return loadedPlugin.SubBigDarkIconsUrl[i];
             }
 
-            return loadedFunction.SubBigIconsUrl[i];
+            return loadedPlugin.SubBigIconsUrl[i];
         }
 
         private static void AddHelpPanel(RibbonTab ribTab)
@@ -550,7 +550,7 @@
             ribSourcePanel.Items.Add(ribRowPanel);
 
             ribRowPanel = new RibbonRowPanel();
-            if (LoadFunctionsHelper.HasStampsPlugin(_colorTheme, out var icon))
+            if (LoadPluginsHelper.HasStampsPlugin(_colorTheme, out var icon))
             {
                 ribRowPanel.Items.Add(
                     RibbonHelpers.AddSmallButton(

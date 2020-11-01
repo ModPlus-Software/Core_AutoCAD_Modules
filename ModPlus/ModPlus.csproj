@@ -121,8 +121,10 @@
     <Compile Include="Helpers\AutocadHelpers.cs" />
     <Compile Include="Helpers\GetFromAutoCAD.cs" />
     <Compile Include="Helpers\InsertToAutoCAD.cs" />
-    <Compile Include="Helpers\LoadFunctionsHelper.cs" />
+    <Compile Include="Helpers\LoadedPlugin.cs" />
+    <Compile Include="Helpers\LoadPluginsHelper.cs" />
     <Compile Include="Helpers\RibbonHelpers.cs" />
+    <Compile Include="Helpers\WPFMenuHelper.cs" />
     <Compile Include="Helpers\XDataHelpers.cs" />
     <Compile Include="MiniPlugins\EditWipeout.cs" />
     <Compile Include="MiniPlugins\MiniFunctionsContextMenuExtensions.cs" />
@@ -333,12 +335,14 @@
   </Choose>
   <ItemGroup>
     <PackageReference Include="ModPlusAPI">
-      <Version>3.1.0</Version>
+      <Version>4.7.0</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="ModPlusStyle">
-      <Version>3.1.0</Version>
+      <Version>3.6.0</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
+      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <PackageReference Include="StyleCop.Analyzers">
       <Version>1.1.118</Version>

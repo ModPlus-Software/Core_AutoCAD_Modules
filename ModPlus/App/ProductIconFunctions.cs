@@ -13,8 +13,7 @@
         {
             if (ProductsDrawableOverrule.ProductsDrawableOverruleInstance == null)
             {
-                UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpProductInsert", "ShowIcon",
-                    true.ToString(), true);
+                UserConfigFile.SetValue("mpProductInsert", "ShowIcon", true.ToString(), true);
                 Overrule.AddOverrule(RXObject.GetClass(typeof(Entity)), ProductsDrawableOverrule.Instance(), true);
                 Overrule.Overruling = true;
                 Application.DocumentManager.MdiActiveDocument.Editor.Regen();
@@ -27,8 +26,7 @@
         {
             if (ProductsDrawableOverrule.ProductsDrawableOverruleInstance != null)
             {
-                UserConfigFile.SetValue(UserConfigFile.ConfigFileZone.Settings, "mpProductInsert", "ShowIcon",
-                    false.ToString(), true);
+                UserConfigFile.SetValue("mpProductInsert", "ShowIcon", false.ToString(), true);
                 Overrule.RemoveOverrule(RXObject.GetClass(typeof(Entity)), ProductsDrawableOverrule.Instance());
                 ProductsDrawableOverrule.ProductsDrawableOverruleInstance = null;
                 Application.DocumentManager.MdiActiveDocument.Editor.Regen();

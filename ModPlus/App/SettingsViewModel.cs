@@ -7,15 +7,15 @@
     using System.Windows;
     using System.Windows.Input;
     using System.Windows.Media.Imaging;
+    using MiniPlugins;
     using ModPlusAPI;
-    using ModPlusAPI.Interfaces;
+    using ModPlusAPI.Enums;
     using ModPlusAPI.LicenseServer;
     using ModPlusAPI.Mvvm;
     using ModPlusAPI.Windows;
     using ModPlusStyle;
     using ModPlusStyle.Controls.Dialogs;
     using Windows;
-    using MiniPlugins;
 
     /// <summary>
     /// Модель представления окна настроек
