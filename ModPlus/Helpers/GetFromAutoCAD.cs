@@ -5,6 +5,7 @@
     using System.Linq;
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
+    using JetBrains.Annotations;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
@@ -12,7 +13,7 @@
     /// <summary>
     /// Методы получения различных данных из AutoCAD
     /// </summary>
-    // ReSharper disable once InconsistentNaming
+    [PublicAPI]
     public static class GetFromAutoCAD
     {
         private const string LangItem = "AutocadDlls";

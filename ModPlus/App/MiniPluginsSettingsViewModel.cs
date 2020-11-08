@@ -3,10 +3,10 @@
     using System.Diagnostics;
     using System.Linq;
     using System.Windows.Input;
+    using MiniPlugins;
     using ModPlusAPI;
     using ModPlusAPI.Mvvm;
     using Windows.MiniPlugins;
-    using MiniPlugins;
 
     /// <summary>
     /// Модель представления для окна настроек, отвечающая за мини-плагины

@@ -4,12 +4,14 @@
     using System.Linq;
     using System.Windows.Controls;
     using Autodesk.Windows;
+    using JetBrains.Annotations;
     using ModPlusAPI;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     /// <summary>
     /// Utils for Ribbon creation
     /// </summary>
+    [PublicAPI]
     public static class RibbonHelpers
     {
         /// <summary>Создание маленькой кнопки</summary>

@@ -10,10 +10,9 @@
     <Window.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
-                <ResourceDictionary Source="pack://application:,,,/ModPlusStyle;component/Styles/Controls.xaml"></ResourceDictionary>
+                <ResourceDictionary Source="pack://application:,,,/ModPlusStyle;component/Styles/Controls.xaml" />
             </ResourceDictionary.MergedDictionaries>
-            <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/AutocadDlls"
-                             IsAsynchronous="False"></XmlDataProvider>
+            <XmlDataProvider x:Key="Lang" Source="E:/ModPlus/Languages/en-US.xml" XPath="ModPlus/AutocadDlls" />
         </ResourceDictionary>
     </Window.Resources>
     <Grid>
@@ -29,10 +28,14 @@
                 BorderThickness="1" BorderBrush="{StaticResource AccentColorBrush}"></Border>
         <!--Заголовок окна-->
         <Image Source="Resources/dwg.png" Width="32" Name="ImgIcon" Margin="2"></Image>
-        <TextBlock HorizontalAlignment="Center" VerticalAlignment="Center"
-                   Grid.Row="0" Grid.Column="0" Name="TbHeader"
-                   FontWeight="Bold" Margin="5"
-                   Text="{Binding Source={StaticResource Lang}, XPath=h20}"></TextBlock>
+        <TextBlock HorizontalAlignment="Center" 
+                   VerticalAlignment="Center"
+                   Grid.Row="0" 
+                   Grid.Column="0"
+                   Name="TbHeader"
+                   FontWeight="Bold" 
+                   Margin="5"
+                   Text="{Binding Source={StaticResource Lang}, XPath=h20}"/>
 
         <!--Открытые чертежи-->
         <StackPanel Orientation="Vertical" Grid.Column="0" Grid.Row="1" Margin="2" Name="ExpOpenDrawings">
@@ -47,8 +50,10 @@
                         </Style>
                     </ListBox.ItemContainerStyle>-->
             </ListBox>
-            <Button Name="BtCloseDwg" Content="{Binding Source={StaticResource Lang}, XPath=close}"
-                    HorizontalAlignment="Center" Click="BtCloseDwg_Click"></Button>
+            <Button Name="BtCloseDwg" 
+                    Content="{Binding Source={StaticResource Lang}, XPath=close}"
+                    HorizontalAlignment="Center"
+                    Click="BtCloseDwg_Click"/>
         </StackPanel>
     </Grid>
 </Window>

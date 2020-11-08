@@ -5,12 +5,16 @@
     using Autodesk.AutoCAD.DatabaseServices;
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Geometry;
+    using JetBrains.Annotations;
     using Model;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
-    /// <summary>Различные вспомогательные методы для работы в AutoCAD</summary>
+    /// <summary>
+    /// Различные вспомогательные методы для работы в AutoCAD
+    /// </summary>
+    [PublicAPI]
     public static class AutocadHelpers
     {
         private const string LangItem = "AutocadDlls";

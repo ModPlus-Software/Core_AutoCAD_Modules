@@ -1,10 +1,12 @@
 ﻿namespace ModPlus.Helpers
 {
     using Autodesk.AutoCAD.Geometry;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Вспомогательные методы построения геометрии
     /// </summary>
+    [PublicAPI]
     public static class GeometryHelpers
     {
         /// <summary>3Д точка по направлению. Направление берется как единичный вектор из точки pt2 к точке pt1, перемножается на указанную

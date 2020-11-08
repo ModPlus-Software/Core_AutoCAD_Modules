@@ -1,360 +1,193 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3CC014BF-973D-461F-8CED-232FFB3E3D1A}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <Version>6.0.0.0</Version>
     <RootNamespace>ModPlus</RootNamespace>
-    <AssemblyName>ModPlus</AssemblyName>
-    <DefineConstants>TRACE;DEBUG;A2021</DefineConstants>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
-    <PlatformTarget>x64</PlatformTarget>
+    <AssemblyName>$(RootNamespace)</AssemblyName>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>ModPlus Software</Company>
+    <PackageIcon>ModPlus.png</PackageIcon>
+    <Authors>ModPlus Software</Authors>
+    <Product>ModPlus</Product>
+    <Copyright>Copyright © ModPlus</Copyright>
+    <Description>ModPlus initialization loading module in AutoCAD. The main ModPlus module for AutoCAD, which is loaded first and loads the necessary plugins, databases, auxiliary libraries. Contains some common helper methods</Description>
+    <PackageTags>ModPlus CAD AutoCAD API Autodesk</PackageTags>
+    <PackageProjectUrl>https://github.com/ModPlus-Software/Core_AutoCAD_Modules</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ModPlus-Software/Core_AutoCAD_Modules.git</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageOutputPath>bin\Package</PackageOutputPath>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <Company>modplus.org</Company>
+    <Authors>modplus.org</Authors>
+    <Product>ModPlus</Product>
+    <Copyright>Copyright © ModPlus</Copyright>
     <CodeAnalysisRuleSet>$(SolutionDir)\ModPlus.ruleset</CodeAnalysisRuleSet>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x64' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <Platform>x64</Platform>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <Optimize>false</Optimize>
-    <OutputPath>bin\x64\Debug\</OutputPath>
-    <DefineConstants>TRACE;DEBUG;A2021</DefineConstants>
-    <AssemblyName>$(AssemblyName)_2021</AssemblyName>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
     <Prefer32Bit>false</Prefer32Bit>
+    <UseWpf>true</UseWpf>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
-  <!-- For AutoCAD versions -->
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2013|x64'">
-    <OutputPath>bin\x64\A2013\</OutputPath>
-    <DefineConstants>TRACE;A2013</DefineConstants>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2013</AssemblyName>
-    <DocumentationFile>bin\x64\A2013\ModPlus_2013.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2013'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2013</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2014|x64'">
-    <OutputPath>bin\x64\A2014\</OutputPath>
-    <DefineConstants>TRACE;A2014</DefineConstants>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2014</AssemblyName>
-    <DocumentationFile>bin\x64\A2014\ModPlus_2014.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2014'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2014</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2015|x64'">
-    <OutputPath>bin\x64\A2015\</OutputPath>
-    <DefineConstants>TRACE;A2015</DefineConstants>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2015</AssemblyName>
-    <DocumentationFile>bin\x64\A2015\ModPlus_2015.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2015'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2015</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2016|x64'">
-    <OutputPath>bin\x64\A2016\</OutputPath>
-    <DefineConstants>TRACE;A2016</DefineConstants>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2016</AssemblyName>
-    <DocumentationFile>bin\x64\A2016\ModPlus_2016.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2016'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2016</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2017|x64'">
-    <OutputPath>bin\x64\A2017\</OutputPath>
-    <DefineConstants>TRACE;A2017</DefineConstants>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2017</AssemblyName>
-    <DocumentationFile>bin\x64\A2017\ModPlus_2017.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2017'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2017</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2018|x64'">
-    <OutputPath>bin\x64\A2018\</OutputPath>
-    <DefineConstants>TRACE;A2018</DefineConstants>
-    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2018</AssemblyName>
-    <DocumentationFile>bin\x64\A2018\ModPlus_2018.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2018'">
+    <TargetFramework>net46</TargetFramework>
+    <Description>2018</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2019|x64'">
-    <OutputPath>bin\x64\A2019\</OutputPath>
-    <DefineConstants>TRACE;A2019</DefineConstants>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2019</AssemblyName>
-    <DocumentationFile>bin\x64\A2019\ModPlus_2019.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2019'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2019</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2020|x64'">
-    <OutputPath>bin\x64\A2020\</OutputPath>
-    <DefineConstants>TRACE;A2020</DefineConstants>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2020</AssemblyName>
-    <DocumentationFile>bin\x64\A2020\ModPlus_2020.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2020'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2020</Description>
   </PropertyGroup>
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'A2021|x64'">
-    <OutputPath>bin\x64\A2021\</OutputPath>
-    <DefineConstants>TRACE;A2021</DefineConstants>
-    <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
-    <AssemblyName>$(AssemblyName)_2021</AssemblyName>
-    <DocumentationFile>bin\x64\A2021\ModPlus_2021.xml</DocumentationFile>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2021' or '$(Configuration)'=='Debug'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2021</Description>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="PresentationCore" />
-    <Reference Include="PresentationFramework" />
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Windows.Forms" />
-    <Reference Include="System.Xaml" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Xml" />
-    <Reference Include="WindowsBase" />
-    <Reference Include="WindowsFormsIntegration" />
-  </ItemGroup>
-  <ItemGroup>
-    <Compile Include="App\MiniPluginsSettingsViewModel.cs" />
-    <Compile Include="App\ProductIconFunctions.cs" />
-    <Compile Include="App\SettingsWindow.xaml.cs">
-      <DependentUpon>SettingsWindow.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="App\MainSettingsCommand.cs" />
-    <Compile Include="App\ProductsDrawableOverrule.cs" />
-    <Compile Include="App\RibbonBuilder.cs" />
-    <Compile Include="App\SettingsViewModel.cs" />
-    <Compile Include="App\UserInfoCommand.cs" />
-    <Compile Include="Helpers\AutocadHelpers.cs" />
-    <Compile Include="Helpers\GetFromAutoCAD.cs" />
-    <Compile Include="Helpers\InsertToAutoCAD.cs" />
-    <Compile Include="Helpers\LoadedPlugin.cs" />
-    <Compile Include="Helpers\LoadPluginsHelper.cs" />
-    <Compile Include="Helpers\RibbonHelpers.cs" />
-    <Compile Include="Helpers\WPFMenuHelper.cs" />
-    <Compile Include="Helpers\XDataHelpers.cs" />
-    <Compile Include="MiniPlugins\EditWipeout.cs" />
-    <Compile Include="MiniPlugins\MiniFunctionsContextMenuExtensions.cs" />
-    <Compile Include="MiniPlugins\NestedEntitiesByBlock.cs" />
-    <Compile Include="MiniPlugins\NestedEntitiesLayer.cs" />
-    <Compile Include="MiniPlugins\ViewPortBoundariesToModelSpace.cs" />
-    <Compile Include="Model\LineWeightWrapper.cs" />
-    <Compile Include="Windows\MiniPlugins\FastBlockSelection.xaml.cs">
-      <DependentUpon>FastBlockSelection.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MiniPlugins\FastBlocksSettings.xaml.cs">
-      <DependentUpon>FastBlocksSettings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\MiniPlugins\SelectLayer.xaml.cs">
-      <DependentUpon>SelectLayer.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MiniPlugins\MiniFunctions.cs" />
-    <Compile Include="ModPlus.cs" />
-    <Compile Include="Helpers\GeometryHelpers.cs" />
-    <Compile Include="mpDrawings.xaml.cs">
-      <DependentUpon>mpDrawings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MpPalette.cs" />
-    <Compile Include="Windows\FloatMenu.xaml.cs">
-      <DependentUpon>FloatMenu.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Resources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="VersionData.cs" />
-    <Compile Include="Windows\FloatMenuCommand.cs" />
-    <Compile Include="Windows\PaletteDrawings.xaml.cs">
-      <DependentUpon>PaletteDrawings.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Windows\PalettePlugins.xaml.cs">
-      <DependentUpon>PalettePlugins.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="XDataHelpersForProducts.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="App\SettingsWindow.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\MiniPlugins\FastBlockSelection.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\MiniPlugins\FastBlocksSettings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\MiniPlugins\SelectLayer.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="mpDrawings.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="Windows\FloatMenu.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PaletteDrawings.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Windows\PalettePlugins.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Properties\Resources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\HelpBt.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\dwg.png" />
-  </ItemGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Configurations>Debug</Configurations>
+    <DefineConstants>Debug;A$(Description)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <Configurations>A$(Description)</Configurations>
+    <DefineConstants>A$(Description)</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <PackageId>ModPlus.AutoCAD.Module.$(Description)</PackageId>
+    <AssemblyName>$(AssemblyName)_$(Description)</AssemblyName>
+  </PropertyGroup>
+
+  <Choose>
+    <When Condition="'$(Configuration)'=='A2013'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2013" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2014'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2014" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2015'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2015" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2016'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2016" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2017'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2017" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2018'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2018" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2019'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2019" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2020'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2020" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2021' or '$(Configuration)'=='Debug'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2021" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+  </Choose>
+
   <ItemGroup>
     <EmbeddedResource Include="Resources\mpIcon.ico" />
   </ItemGroup>
+
   <ItemGroup>
-    <Resource Include="Resources\mpHideProductIcons_16x16.png" />
-    <Resource Include="Resources\mpShowProductIcons_16x16.png" />
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlus.ProductDatabase" Version="2.2.0.11" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusAPI" Version="5.0.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusStyle" Version="3.7.0" ExcludeAssets="runtime" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
   </ItemGroup>
+
   <ItemGroup>
-    <Resource Include="Resources\mpShowProductIcon.png" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="WindowsFormsIntegration" />
   </ItemGroup>
+
   <ItemGroup>
-    <Resource Include="Resources\forIcon_256.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\mpShowProductIcons_16x16_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\mpHideProductIcons_16x16_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\HelpBt_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\mpStampFields_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\mpStampFields_16x16_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\paletteCloseDrawing_16x16.png" />
-    <Resource Include="Resources\paletteNewDrawing_16x16.png" />
-    <Resource Include="Resources\paletteOpenDrawing_16x16.png" />
-  </ItemGroup>
-  <ItemGroup>
-    <Resource Include="Resources\UserInfo_32x32.png" />
-    <Resource Include="Resources\UserInfo_32x32_dark.png" />
-  </ItemGroup>
-  <ItemGroup>
+    <Resource Include="Resources\dwg.png" />
     <Resource Include="Resources\Flags\be-BY.png" />
     <Resource Include="Resources\Flags\de-DE.png" />
     <Resource Include="Resources\Flags\en-US.png" />
     <Resource Include="Resources\Flags\ru-RU.png" />
     <Resource Include="Resources\Flags\uk-UA.png" />
+    <Resource Include="Resources\forIcon_256.png" />
+    <Resource Include="Resources\HelpBt.png" />
+    <Resource Include="Resources\HelpBt_dark.png" />
+    <Resource Include="Resources\mpHideProductIcons_16x16.png" />
+    <Resource Include="Resources\mpHideProductIcons_16x16_dark.png" />
+    <Resource Include="Resources\mpShowProductIcon.png" />
+    <Resource Include="Resources\mpShowProductIcons_16x16.png" />
+    <Resource Include="Resources\mpShowProductIcons_16x16_dark.png" />
+    <Resource Include="Resources\mpStampFields_16x16.png" />
+    <Resource Include="Resources\mpStampFields_16x16_dark.png" />
+    <Resource Include="Resources\paletteCloseDrawing_16x16.png" />
+    <Resource Include="Resources\paletteNewDrawing_16x16.png" />
+    <Resource Include="Resources\paletteOpenDrawing_16x16.png" />
+    <Resource Include="Resources\UserInfo_32x32.png" />
+    <Resource Include="Resources\UserInfo_32x32_dark.png" />
   </ItemGroup>
-  <!-- CHOOSE -->
-  <Choose>
-    <When Condition=" '$(Configuration)'=='A2013' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2013">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2014' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2014">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2015' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2015">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2016' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2016">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2017' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2017">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2018' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2018">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2019' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2019">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2020' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2020">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-    <When Condition=" '$(Configuration)'=='A2021' or '$(Configuration)'=='Debug' ">
-      <ItemGroup>
-        <PackageReference Include="ModPlus.AutoCAD.API.2021">
-          <Version>1.0.0</Version>
-          <ExcludeAssets>runtime</ExcludeAssets>
-        </PackageReference>
-      </ItemGroup>
-    </When>
-  </Choose>
+
   <ItemGroup>
-    <PackageReference Include="ModPlusAPI">
-      <Version>4.7.0</Version>
-      <ExcludeAssets>runtime</ExcludeAssets>
-      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="ModPlusStyle">
-      <Version>3.6.0</Version>
-      <ExcludeAssets>runtime</ExcludeAssets>
-      <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
-    <PackageReference Include="StyleCop.Analyzers">
-      <Version>1.1.118</Version>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-      <PrivateAssets>all</PrivateAssets>
-    </PackageReference>
+    <None Include="ModPlus.png" Pack="true" PackagePath="" />
   </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <PropertyGroup>
-    <PostBuildEvent>if $(ConfigurationName) == Debug (
-    "$(ModPlusPostBuild)" "ExtDll" "$(TargetPath)"
-)</PostBuildEvent>
-  </PropertyGroup>
+
 </Project>

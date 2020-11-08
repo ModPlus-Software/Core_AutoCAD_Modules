@@ -6,11 +6,15 @@
     using System.Windows.Forms.Integration;
     using Autodesk.AutoCAD.Runtime;
     using Autodesk.AutoCAD.Windows;
+    using JetBrains.Annotations;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using Windows;
 
-    /// <summary>Методы создания и работы с палитрой ModPlus</summary>
+    /// <summary>
+    /// Методы создания и работы с палитрой ModPlus
+    /// </summary>
+    [PublicAPI]
     public static class MpPalette
     {
         private const string LangItem = "AutocadDlls";
@@ -140,8 +144,7 @@
 
         private static void _mpPaletteSet_Save(object sender, PalettePersistEventArgs e)
         {
-            // ReSharper disable once UnusedVariable
-            var a = (double)e.ConfigurationSection.ReadProperty("ModPlusPalette", 22.3);
+            _ = (double)e.ConfigurationSection.ReadProperty("ModPlusPalette", 22.3);
         }
 
         private static void _mpPaletteSet_Load(object sender, PalettePersistEventArgs e)

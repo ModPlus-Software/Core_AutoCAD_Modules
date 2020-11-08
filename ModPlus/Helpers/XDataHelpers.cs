@@ -2,12 +2,14 @@
 {
     using System;
     using Autodesk.AutoCAD.DatabaseServices;
+    using JetBrains.Annotations;
     using ModPlusAPI.Windows;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     /// <summary>
     /// Вспомогательные методы для работы с расширенными данными (XData)
     /// </summary>
+    [PublicAPI]
     public static class XDataHelpers
     {
         /// <summary>Добавление (регистрация) имени приложения</summary>

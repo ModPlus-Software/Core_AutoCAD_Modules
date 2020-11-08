@@ -1,0 +1,199 @@
+<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
+  <PropertyGroup>
+    <Version>6.0.0.0</Version>
+    <RootNamespace>ModPlus</RootNamespace>
+    <AssemblyName>$(RootNamespace)</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Company>ModPlus Software</Company>
+    <PackageIcon>ModPlus.png</PackageIcon>
+    <Authors>ModPlus Software</Authors>
+    <Product>ModPlus</Product>
+    <Copyright>Copyright © ModPlus</Copyright>
+    <Description>ModPlus initialization loading module in AutoCAD. The main ModPlus module for AutoCAD, which is loaded first and loads the necessary plugins, databases, auxiliary libraries. Contains some common helper methods</Description>
+    <PackageTags>ModPlus CAD AutoCAD API Autodesk</PackageTags>
+    <PackageProjectUrl>https://github.com/ModPlus-Software/Core_AutoCAD_Modules</PackageProjectUrl>
+    <RepositoryUrl>https://github.com/ModPlus-Software/Core_AutoCAD_Modules.git</RepositoryUrl>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Company>modplus.org</Company>
+    <Authors>modplus.org</Authors>
+    <Product>ModPlus</Product>
+    <Copyright>Copyright © ModPlus</Copyright>
+    <CodeAnalysisRuleSet>$(SolutionDir)\ModPlus.ruleset</CodeAnalysisRuleSet>
+    <Platform>x64</Platform>
+    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+    <Optimize>false</Optimize>
+    <Prefer32Bit>false</Prefer32Bit>
+    <UseWpf>true</UseWpf>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2013'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2013</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2014'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2014</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2015'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2015</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2016'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2016</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2017'">
+    <TargetFramework>net45</TargetFramework>
+    <Description>2017</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2018'">
+    <TargetFramework>net46</TargetFramework>
+    <Description>2018</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2019'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2019</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2020'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2020</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'A2021' or '$(Configuration)'=='Debug'">
+    <TargetFramework>net47</TargetFramework>
+    <Description>2021</Description>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
+    <Configurations>Debug</Configurations>
+    <DefineConstants>Debug;A$(Description)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)' != 'Debug'">
+    <Configurations>A$(Description)</Configurations>
+    <DefineConstants>A$(Description)</DefineConstants>
+  </PropertyGroup>
+  <PropertyGroup>
+    <PackageId>ModPlus.AutoCAD.Module.$(Description)</PackageId>
+    <AssemblyName>$(AssemblyName)_$(Description)</AssemblyName>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+  <Choose>
+    <When Condition="'$(Configuration)'=='A2013'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2013" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2014'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2014" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2015'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2015" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2016'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2016" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2017'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2017" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2018'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2018" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2019'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2019" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2020'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2020" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2021' or '$(Configuration)'=='Debug'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2021" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+  </Choose>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\mpIcon.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlus.ProductDatabase" Version="2.2.0.11" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusAPI" Version="5.0.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusStyle" Version="3.6.0" ExcludeAssets="runtime" />
+    <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ModPlus.png" Pack="true" PackagePath="" />
+  </ItemGroup>
+  <ItemGroup>
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.autocad.api.2016\1.0.0\lib\accoremgd.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.autocad.api.2016\1.0.0\lib\AcCui.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.autocad.api.2016\1.0.0\lib\acdbmgd.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.autocad.api.2016\1.0.0\lib\acmgd.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.autocad.api.2016\1.0.0\lib\AdWindows.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\jetbrains.annotations\2020.1.0\lib\net20\JetBrains.Annotations.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\microsoft.xaml.behaviors.wpf\1.1.3\lib\net45\Microsoft.Xaml.Behaviors.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplusapi\5.0.0\lib\ModPlus.Newtonsoft.Json.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplusapi\5.0.0\lib\ModPlus.SimpleInjector.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplusapi\5.0.0\lib\ModPlusAPI.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplusapi\5.0.0\lib\ModPlusService.Dto.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplusstyle\3.6.0\lib\ModPlusStyle.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpBaseInt.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpConcrete.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpMaterial.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpMetall.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpOther.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpProductInt.dll" />
+    <ReferencePath Include="C:\Users\Modis\.nuget\packages\modplus.productdatabase\2.2.0.11\lib\mpWood.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\mscorlib.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationCore.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\PresentationFramework.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Core.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Data.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Drawing.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.IO.Compression.FileSystem.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Numerics.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Runtime.Serialization.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Controls.Ribbon.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Windows.Forms.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xaml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\System.Xml.Linq.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\UIAutomationClient.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\UIAutomationClientsideProviders.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\UIAutomationProvider.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\UIAutomationTypes.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsBase.dll" />
+    <ReferencePath Include="C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.5\WindowsFormsIntegration.dll" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\App\SettingsWindow.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\mpDrawings.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\FloatMenu.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\MiniPlugins\FastBlockSelection.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\MiniPlugins\FastBlocksSettings.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\MiniPlugins\SelectLayer.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\PaletteDrawings.g.cs" />
+    <Compile Include="E:\DevProjects\ModPlus\Solutions\AutoCAD Modules\ModPlus\obj\x64\A2016\Windows\PalettePlugins.g.cs" />
+  </ItemGroup>
+</Project>

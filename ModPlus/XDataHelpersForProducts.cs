@@ -5,10 +5,12 @@
     using System.Runtime.Serialization;
     using System.Runtime.Serialization.Formatters.Binary;
     using Autodesk.AutoCAD.DatabaseServices;
+    using JetBrains.Annotations;
 
     /// <summary>
     /// Вспомогательные методы работы с расширенными данными для функций из раздела "Продукты ModPlus"
     /// </summary>
+    [PublicAPI]
     public static class XDataHelpersForProducts
     {
         private const string AppName = "ModPlusProduct";

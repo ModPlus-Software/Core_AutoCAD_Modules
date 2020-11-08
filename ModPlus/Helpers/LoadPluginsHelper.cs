@@ -9,7 +9,6 @@
     using System.Resources;
     using ModPlusAPI;
     using ModPlusAPI.Abstractions;
-    using ModPlusAPI.Interfaces;
 
     /* Плагин из файла конфигурации читаю в том виде, в каком они там сохранены
      * А вот получение локализованных значений (имя, описание, полное описание)
@@ -69,68 +68,6 @@
                         if (plugin.SubPluginsNames != null)
                         {
                             foreach (var subFunctionsName in plugin.SubPluginsNames)
-                            {
-                                lf.SubSmallIconsUrl.Add(
-                                    $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/{subFunctionsName}_16x16.png");
-                                lf.SubSmallDarkIconsUrl.Add(GetSmallDarkIcon(loadedFuncAssembly, subFunctionsName));
-                                lf.SubBigIconsUrl.Add(
-                                    $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/{subFunctionsName}_32x32.png");
-                                lf.SubBigDarkIconsUrl.Add(GetBigDarkIcon(loadedFuncAssembly, subFunctionsName));
-                            }
-                        }
-
-                        if (plugin.SubHelpImages != null)
-                        {
-                            foreach (var helpImage in plugin.SubHelpImages)
-                            {
-                                lf.SubHelpImages.Add(
-                                    !string.IsNullOrEmpty(helpImage)
-                                    ? $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/Help/{helpImage}"
-                                    : string.Empty);
-                            }
-                        }
-
-                        LoadedFunctions.Add(lf);
-                    }
-
-                    break;
-                }
-
-                // TODO Remove after update all plugins
-                i = type.GetInterface(nameof(IModPlusFunctionInterface));
-                if (i != null)
-                {
-                    if (Activator.CreateInstance(type) is IModPlusFunctionInterface plugin)
-                    {
-                        var lf = new LoadedPlugin
-                        {
-                            Name = plugin.Name,
-                            LName = plugin.LName,
-                            Description = plugin.Description,
-                            CanAddToRibbon = plugin.CanAddToRibbon,
-                            SmallIconUrl =
-                                $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/{plugin.Name}_16x16.png",
-                            SmallDarkIconUrl = GetSmallDarkIcon(loadedFuncAssembly, plugin.Name),
-                            BigIconUrl =
-                                $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/{plugin.Name}_32x32.png",
-                            BigDarkIconUrl = GetBigDarkIcon(loadedFuncAssembly, plugin.Name),
-                            AvailProductExternalVersion = VersionData.CurrentCadVersion,
-                            FullDescription = plugin.FullDescription,
-                            ToolTipHelpImage = !string.IsNullOrEmpty(plugin.ToolTipHelpImage)
-                            ? $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/Help/{plugin.ToolTipHelpImage}"
-                            : string.Empty,
-                            SubPluginsNames = plugin.SubFunctionsNames,
-                            SubPluginsLNames = plugin.SubFunctionsLames,
-                            SubDescriptions = plugin.SubDescriptions,
-                            SubFullDescriptions = plugin.SubFullDescriptions,
-                            SubBigIconsUrl = new List<string>(),
-                            SubSmallIconsUrl = new List<string>(),
-                            SubHelpImages = new List<string>()
-                        };
-
-                        if (plugin.SubFunctionsNames != null)
-                        {
-                            foreach (var subFunctionsName in plugin.SubFunctionsNames)
                             {
                                 lf.SubSmallIconsUrl.Add(
                                     $"pack://application:,,,/{loadedFuncAssembly.GetName().FullName};component/Resources/{subFunctionsName}_16x16.png");

@@ -6,6 +6,7 @@
     using Autodesk.AutoCAD.EditorInput;
     using Autodesk.AutoCAD.Geometry;
     using Autodesk.AutoCAD.GraphicsInterface;
+    using JetBrains.Annotations;
     using ModPlusAPI;
     using ModPlusAPI.Windows;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
@@ -13,6 +14,7 @@
     /// <summary>
     /// Функции вставки/добавления в автокад
     /// </summary>
+    [PublicAPI]
     public class InsertToAutoCad
     {
         private const string LangItem = "AutocadDlls";

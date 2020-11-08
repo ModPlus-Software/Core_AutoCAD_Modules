@@ -14,11 +14,11 @@
     using Helpers;
     using MiniPlugins;
     using ModPlusAPI;
+    using ModPlusAPI.Enums;
     using ModPlusAPI.LicenseServer;
     using ModPlusAPI.UserInfo;
     using ModPlusAPI.Windows;
     using Windows;
-    using ModPlusAPI.Enums;
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     // ReSharper disable once UnusedMember.Global
@@ -30,10 +30,11 @@
         private static bool _dropNextHelpCall; // Flag to tell if the next message from AutoCAD to display it's own help should be ignored
         private static string _currentTooltip; // If not null, this is the HelpTopic of the currently open tooltip. If null, no tooltip is displaying.
         private static bool _quiteLoad;
-        private static readonly string[] BaseFiles = {
+        private static readonly string[] BaseFiles =
+        {
             "mpBaseInt.dll", "mpMetall.dll", "mpConcrete.dll", "mpMaterial.dll", "mpOther.dll", "mpWood.dll", "mpProductInt.dll"
         };
-        
+
         /// <inheritdoc />
         public void Initialize()
         {
@@ -89,7 +90,7 @@
                 // Строим: ленту, меню, плавающее меню
                 // Загрузка ленты
                 Autodesk.Windows.ComponentManager.ItemInitialized += ComponentManager_ItemInitialized;
-                
+
                 if (ModPlusAPI.Variables.Palette)
                     MpPalette.CreatePalette(false);
 
@@ -108,19 +109,19 @@
                 CheckAutoUpdaterLoaded();
 
                 // Включение иконок для продуктов
-                var showProductsIcon = 
+                var showProductsIcon =
                     bool.TryParse(UserConfigFile.GetValue("mpProductInsert", "ShowIcon"), out var b) && b; // false
                 if (showProductsIcon)
-                    ProductIconFunctions.ShowIcon();
+                    ProductIconCommands.ShowIcon();
 
                 // license server
-                var disableConnectionWithLicenseServerInAutoCad = 
+                var disableConnectionWithLicenseServerInAutoCad =
                     ModPlusAPI.Variables.DisableConnectionWithLicenseServerInAutoCAD;
 
                 if (ModPlusAPI.Variables.IsLocalLicenseServerEnable &&
                     !disableConnectionWithLicenseServerInAutoCad)
                     ClientStarter.StartConnection(SupportedProduct.AutoCAD);
-                
+
                 if (ModPlusAPI.Variables.IsWebLicenseServerEnable &&
                     !disableConnectionWithLicenseServerInAutoCad)
                     WebLicenseServerClient.Instance.Start(SupportedProduct.AutoCAD);
@@ -143,7 +144,7 @@
                 ExceptionBox.Show(exception);
             }
         }
-        
+
         /// <inheritdoc/>
         public void Terminate()
         {
@@ -290,9 +291,9 @@
         {
             if (Autodesk.Windows.ComponentManager.Ribbon == null)
                 return;
-            
+
             Autodesk.Windows.ComponentManager.Ribbon.BackgroundRenderFinished += RibbonOnBackgroundRenderFinished;
-            
+
             if (ModPlusAPI.Variables.Ribbon)
                 RibbonBuilder.BuildRibbon();
             else
@@ -383,7 +384,7 @@
             {
                 await UserInfoService.GetUserInfoAsync();
                 var userInfo = UserInfoService.GetUserInfoResponseFromHash();
-                if (userInfo == null) 
+                if (userInfo == null)
                     return;
 
                 if (!userInfo.IsLocalData && !await ModPlusAPI.Web.Connection.HasAllConnectionAsync(3))
@@ -399,6 +400,8 @@
 
         #region ToolTip Hook
 
+//// ReSharper disable InconsistentNaming
+#pragma warning disable 1591
         public enum WndMsg
         {
             WM_ACAD_HELP = 0x4D,
@@ -409,6 +412,8 @@
         {
             VK_F1 = 0x70,
         }
+#pragma warning restore 1591
+//// ReSharper restore InconsistentNaming
 
         private void AutoCadMessageHandler(object sender, PreTranslateMessageEventArgs e)
         {
@@ -441,12 +446,12 @@
         private static void ComponentManager_ToolTipOpened(object sender, EventArgs e)
         {
             Autodesk.Internal.Windows.ToolTip tt = sender as Autodesk.Internal.Windows.ToolTip;
-            
+
             if (tt == null)
                 return;
 
             Autodesk.Windows.RibbonToolTip rtt = tt.Content as Autodesk.Windows.RibbonToolTip;
-            
+
             if (rtt == null)
                 _currentTooltip = tt.HelpTopic;
             else
@@ -467,7 +472,7 @@
             protected override WebRequest GetWebRequest(Uri uri)
             {
                 var w = base.GetWebRequest(uri);
-                if (w != null) 
+                if (w != null)
                     w.Timeout = 3000;
                 return w;
             }

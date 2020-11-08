@@ -5,9 +5,14 @@
     using Autodesk.AutoCAD.Runtime;
     using ModPlusAPI;
 
-    public class ProductIconFunctions
+    /// <summary>
+    /// Команды включения/отключения иконки продуктов
+    /// </summary>
+    public class ProductIconCommands
     {
-        /// <summary>Включить идентификационные иконки для примитивов, имеющих расширенные данные продуктов ModPlus</summary>
+        /// <summary>
+        /// Включить идентификационные иконки для примитивов, имеющих расширенные данные продуктов ModPlus
+        /// </summary>
         [CommandMethod("mpShowProductIcons")]
         public static void ShowIcon()
         {
@@ -20,7 +25,9 @@
             }
         }
 
-        /// <summary>Отключить идентификационные иконки для примитивов, имеющих расширенные данные продуктов ModPlus</summary>
+        /// <summary>
+        /// Отключить идентификационные иконки для примитивов, имеющих расширенные данные продуктов ModPlus
+        /// </summary>
         [CommandMethod("mpHideProductIcons")]
         public void HideIcon()
         {
