@@ -23,6 +23,7 @@
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
             <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         <Grid.Resources>
             <Canvas x:Key="AppbarSettings" Width="76" Height="76" Clip="F1 M 0,0L 76,0L 76,76L 0,76L 0,0">
@@ -58,16 +59,41 @@
                    Width="16" Height="16"
                    RenderOptions.BitmapScalingMode="HighQuality"></Image>
         </Button>
-        <Button Grid.Row="0" Grid.Column="2" MinWidth="0" Name="BtFields" 
-                Style="{DynamicResource ModPlusFlatButton}" Margin="2"
-                Width="26" Height="26" Padding="0" SnapsToDevicePixels="True"
-                 ToolTip="{Binding Source={StaticResource Lang}, XPath=h40}" 
-                HorizontalAlignment="Right" Click="BtFields_OnClick">
+        <Button Grid.Row="0"
+                Grid.Column="2"
+                MinWidth="0"
+                Name="BtFields" 
+                Style="{DynamicResource ModPlusFlatButton}"
+                Margin="2"
+                Width="26"
+                Height="26"
+                Padding="0"
+                SnapsToDevicePixels="True"
+                ToolTip="{Binding Source={StaticResource Lang}, XPath=h40}" 
+                HorizontalAlignment="Right"
+                Click="BtFields_OnClick">
             <Image Source="../Resources/MpStampFields_16x16.png" Stretch="Fill"
                    Width="16" Height="16"
                    RenderOptions.BitmapScalingMode="HighQuality"></Image>
         </Button>
-        <Button Grid.Row="0" Grid.Column="3" MinWidth="0" Name="BtUserInfo"
+        <Button Grid.Row="0"
+                Grid.Column="3"
+                MinWidth="0"
+                Name="BtSignatures" 
+                Style="{DynamicResource ModPlusFlatButton}"
+                Margin="2"
+                Width="26"
+                Height="26"
+                Padding="0"
+                SnapsToDevicePixels="True"
+                ToolTip="{Binding Source={StaticResource Lang}, XPath=h63}" 
+                HorizontalAlignment="Right"
+                Click="BtSignatures_OnClick">
+            <Image Source="../Resources/MpSignatures_16x16.png" Stretch="Fill"
+                   Width="16" Height="16"
+                   RenderOptions.BitmapScalingMode="HighQuality"></Image>
+        </Button>
+        <Button Grid.Row="0" Grid.Column="4" MinWidth="0" Name="BtUserInfo"
                 Style="{DynamicResource ModPlusFlatButton}" Margin="2"
                 Padding="4" Click="BtUserInfo_OnClick"
                 ToolTip="{Binding Source={StaticResource Lang}, XPath=h41}"
@@ -79,7 +105,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <Button Grid.Row="0" Grid.Column="4" MinWidth="0" Name="BtSettings"
+        <Button Grid.Row="0" Grid.Column="5" MinWidth="0" Name="BtSettings"
                 Style="{DynamicResource ModPlusFlatButton}" Margin="2"
                 Padding="4" Click="BtSettings_OnClick"
                 ToolTip="{Binding Source={StaticResource Lang}, XPath=h41}"
@@ -91,7 +117,7 @@
                 </Rectangle.OpacityMask>
             </Rectangle>
         </Button>
-        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="5"
+        <ScrollViewer Grid.Column="0" Grid.Row="1" Grid.ColumnSpan="6"
                       VerticalScrollBarVisibility="Auto" Background="White">
             <ScrollViewer.Resources>
                 <Style TargetType="{x:Type Button}" BasedOn="{StaticResource ModPlusFlatButton}">

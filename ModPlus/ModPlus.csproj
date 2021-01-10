@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <Version>6.0.0.0</Version>
+    <Version>6.1.0.0</Version>
     <RootNamespace>ModPlus</RootNamespace>
     <AssemblyName>$(RootNamespace)</AssemblyName>
   </PropertyGroup>
@@ -149,7 +149,7 @@
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" ExcludeAssets="runtime" />
     <PackageReference Include="ModPlus.ProductDatabase" Version="2.2.0.11" ExcludeAssets="runtime" />
-    <PackageReference Include="ModPlusAPI" Version="5.0.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusAPI" Version="6.7.0" ExcludeAssets="runtime" />
     <PackageReference Include="ModPlusStyle" Version="3.7.0" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
@@ -177,6 +177,8 @@
     <Resource Include="Resources\mpShowProductIcon.png" />
     <Resource Include="Resources\mpShowProductIcons_16x16.png" />
     <Resource Include="Resources\mpShowProductIcons_16x16_dark.png" />
+    <Resource Include="Resources\mpSignatures_16x16.png" />
+    <Resource Include="Resources\mpSignatures_16x16_dark.png" />
     <Resource Include="Resources\mpStampFields_16x16.png" />
     <Resource Include="Resources\mpStampFields_16x16_dark.png" />
     <Resource Include="Resources\paletteCloseDrawing_16x16.png" />

@@ -131,7 +131,7 @@
 
         private void FillFieldsFunction()
         {
-            BtFields.Visibility = LoadPluginsHelper.HasStampsPlugin(1, out _) ? Visibility.Visible : Visibility.Collapsed;
+            BtFields.Visibility = LoadPluginsHelper.HasStampsPlugin(1, out _, out _) ? Visibility.Visible : Visibility.Collapsed;
         }
 
         private void BtSettings_OnClick(object sender, RoutedEventArgs e)
@@ -140,11 +140,16 @@
                 AcApp.DocumentManager.MdiActiveDocument.SendStringToExecute("_MPSETTINGS ", false, false, false);
         }
 
-        // start fields function
         private void BtFields_OnClick(object sender, RoutedEventArgs e)
         {
             if (AcApp.DocumentManager.Count > 0)
                 AcApp.DocumentManager.MdiActiveDocument.SendStringToExecute("_MPSTAMPFIELDS ", false, false, false);
+        }
+        
+        private void BtSignatures_OnClick(object sender, RoutedEventArgs e)
+        {
+            if (AcApp.DocumentManager.Count > 0)
+                AcApp.DocumentManager.MdiActiveDocument.SendStringToExecute("_MPSIGNATURES ", false, false, false);
         }
 
         private void BtHideProductIcon_OnClick(object sender, RoutedEventArgs e)

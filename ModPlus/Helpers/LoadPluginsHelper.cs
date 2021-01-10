@@ -184,23 +184,29 @@
         /// Имеется ли плагин "Штампы"
         /// </summary>
         /// <param name="colorTheme">Тема оформления</param>
-        /// <param name="icon">Иконка плагина</param>
-        public static bool HasStampsPlugin(int colorTheme, out string icon)
+        /// <param name="fieldsIcon">Иконка плагина "Поля"</param>
+        /// <param name="signaturesIcon">Иконка плагина "Подписи"</param>
+        public static bool HasStampsPlugin(int colorTheme, out string fieldsIcon, out string signaturesIcon)
         {
-            icon = string.Empty;
+            fieldsIcon = string.Empty;
+            signaturesIcon = string.Empty;
             try
             {
                 if (LoadedFunctions.Any(x => x.Name.Equals("mpStamps")))
                 {
                     if (colorTheme == 1)
                     {
-                        icon =
+                        fieldsIcon =
                             $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpStampFields_16x16.png";
+                        signaturesIcon =
+                            $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpSignatures_16x16.png";
                     }
                     else
                     {
-                        icon =
+                        fieldsIcon =
                             $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpStampFields_16x16_dark.png";
+                        signaturesIcon =
+                            $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpSignatures_16x16_dark.png";
                     }
 
                     return true;

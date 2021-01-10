@@ -507,13 +507,11 @@
 
         private static void AddHelpPanel(RibbonTab ribTab)
         {
-            // create the panel source
             var ribSourcePanel = new RibbonPanelSource
             {
                 Title = "ModPlus"
             };
 
-            // now the panel
             var ribPanel = new RibbonPanel
             {
                 Source = ribSourcePanel
@@ -550,17 +548,28 @@
             ribSourcePanel.Items.Add(ribRowPanel);
 
             ribRowPanel = new RibbonRowPanel();
-            if (LoadPluginsHelper.HasStampsPlugin(_colorTheme, out var icon))
+            if (LoadPluginsHelper.HasStampsPlugin(_colorTheme, out var fieldsIcon, out var signaturesIcon))
             {
                 ribRowPanel.Items.Add(
                     RibbonHelpers.AddSmallButton(
                         "mpStampFields",
                         Language.GetItem(LangItem, "h43"),
-                        icon,
+                        fieldsIcon,
                         Language.GetItem(LangItem, "h44"),
                         Language.GetItem(LangItem, "h45"),
                         string.Empty,
                         "autocadplugins/mpstamps"));
+                
+                ribRowPanel.Items.Add(
+                    RibbonHelpers.AddSmallButton(
+                        "mpSignatures",
+                        Language.GetItem(LangItem, "h60"),
+                        signaturesIcon,
+                        Language.GetItem(LangItem, "h61"),
+                        Language.GetItem(LangItem, "h62"),
+                        string.Empty,
+                        "autocadplugins/mpstamps"));
+                
                 ribRowPanel.Items.Add(new RibbonRowBreak());
             }
 
@@ -574,8 +583,7 @@
                     Language.GetItem(LangItem, "h37"),
                     Language.GetItem(LangItem, "h38"),
                     $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcon.png", "help/mpsettings"));
-            ribRowPanel.Items.Add(new RibbonRowBreak());
-
+            
             ribRowPanel.Items.Add(
                 RibbonHelpers.AddSmallButton(
                     "mpHideProductIcons",
@@ -587,6 +595,7 @@
                     string.Empty,
                     string.Empty, 
                     "help/mpsettings"));
+            
             ribSourcePanel.Items.Add(ribRowPanel);
         }
     }
