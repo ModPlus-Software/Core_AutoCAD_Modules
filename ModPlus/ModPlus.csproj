@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <Version>6.1.0.0</Version>
+    <Version>6.2.0.0</Version>
     <RootNamespace>ModPlus</RootNamespace>
     <AssemblyName>$(RootNamespace)</AssemblyName>
   </PropertyGroup>
@@ -149,8 +149,8 @@
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" ExcludeAssets="runtime" />
     <PackageReference Include="ModPlus.ProductDatabase" Version="2.2.0.11" ExcludeAssets="runtime" />
-    <PackageReference Include="ModPlusAPI" Version="6.7.0" ExcludeAssets="runtime" />
-    <PackageReference Include="ModPlusStyle" Version="3.7.0" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusAPI" Version="6.8.3" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusStyle" Version="3.7.1" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>

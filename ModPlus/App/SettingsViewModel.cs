@@ -16,6 +16,7 @@
     using ModPlusStyle;
     using ModPlusStyle.Controls.Dialogs;
     using Windows;
+    using ModPlusAPI.UserInfo;
 
     /// <summary>
     /// Модель представления окна настроек
@@ -143,6 +144,21 @@
             get => Variables.QuietLoading;
             set => Variables.QuietLoading = value;
         }
+        
+        /// <summary>
+        /// Запускает окно настроек уведомлений
+        /// </summary>
+        public ICommand NotificationSettingsCommand => new RelayCommandWithoutParameter(() =>
+        {
+            try
+            {
+                UserInfoService.ShowUserNotificationSettings();
+            }
+            catch (Exception exception)
+            {
+                ExceptionBox.Show(exception);
+            }
+        });
 
         #region Adaptation
 

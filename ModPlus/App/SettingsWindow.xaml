@@ -42,6 +42,7 @@
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
                             <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="Auto"/>
@@ -51,8 +52,12 @@
                         </Grid.ColumnDefinitions>
 
                         <!--Language-->
-                        <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Source={StaticResource Lang}, XPath=h5}"/>
-                        <ComboBox Grid.Row="0" Grid.Column="1" 
+                        <TextBlock Grid.Row="0"
+                                   Grid.Column="0"
+                                   Margin="{DynamicResource ModPlusDefaultMargin}"
+                                   Text="{Binding Source={StaticResource Lang}, XPath=h5}"/>
+                        <ComboBox Grid.Row="0"
+                                  Grid.Column="1" 
                                   ItemsSource="{Binding Path=Languages}"
                                   SelectedItem="{Binding Path=SelectedLanguage, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                             <ComboBox.ItemTemplate>
@@ -61,24 +66,34 @@
                                 </DataTemplate>
                             </ComboBox.ItemTemplate>
                         </ComboBox>
-                        <Image Grid.Column="2" Grid.Row="0" Height="24" Stretch="UniformToFill"
+                        <Image Grid.Column="2"
+                               Grid.Row="0"
+                               Height="24" 
+                               Stretch="UniformToFill"
                                HorizontalAlignment="Left"
                                Source="{Binding Path=LanguageImage}"
                                Margin="{DynamicResource ModPlusDefaultMargin}"
                                UseLayoutRounding="False"
-                               RenderOptions.BitmapScalingMode="HighQuality">
-                        </Image>
-                        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="4"
+                               RenderOptions.BitmapScalingMode="HighQuality"/>
+
+                        <TextBlock Grid.Row="1"
+                                   Grid.Column="0"
+                                   Grid.ColumnSpan="4"
                                    Visibility="{Binding Path=MessageAboutLanguageVisibility}"
-                                   TextWrapping="Wrap" MaxWidth="400" 
-                                   HorizontalAlignment="Center" TextAlignment="Center"
+                                   TextWrapping="Wrap"
+                                   MaxWidth="400" 
+                                   HorizontalAlignment="Center"
+                                   TextAlignment="Center"
                                    Text="{Binding Source={StaticResource Lang}, XPath=msg24}"
-                                   FontWeight="SemiBold" Foreground="{DynamicResource ErrorBrush}"></TextBlock>
+                                   FontWeight="SemiBold" Foreground="{DynamicResource ErrorBrush}"/>
 
                         <!--Theme-->
-                        <TextBlock Grid.Row="2" Grid.Column="0"
+                        <TextBlock Grid.Row="2"
+                                   Grid.Column="0"
+                                   Margin="{DynamicResource ModPlusDefaultMargin}"
                                    Text="{Binding Source={StaticResource Lang}, XPath=h6}"></TextBlock>
-                        <ComboBox Grid.Row="2" Grid.Column="1" 
+                        <ComboBox Grid.Row="2"
+                                  Grid.Column="1" 
                                   ItemsSource="{Binding Path=Themes}"
                                   SelectedItem="{Binding Path=SelectedTheme, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
                             <ComboBox.ItemTemplate>
@@ -97,18 +112,43 @@
                         </ComboBox>
 
                         <!--Separator-->
-                        <TextBlock Grid.Row="3" Grid.Column="0"
+                        <TextBlock Grid.Row="3"
+                                   Grid.Column="0"
+                                   Margin="{DynamicResource ModPlusDefaultMargin}"
                                    Text="{Binding Source={StaticResource Lang}, XPath=h8}"></TextBlock>
-                        <ComboBox Grid.Row="3" Grid.Column="1" 
+                        <ComboBox Grid.Row="3"
+                                  Grid.Column="1" 
                                   ItemsSource="{Binding Path=Separators}"
                                   SelectedItem="{Binding Path=SelectedSeparator, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   ToolTip="{Binding Source={StaticResource Lang}, XPath=tt1}"/>
 
                         <!-- Quiet Loading -->
-                        <CheckBox Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="3"
+                        <CheckBox Grid.Row="4"
+                                  Grid.Column="0"
+                                  Grid.ColumnSpan="3"
                                   IsChecked="{Binding Path=QuietLoading, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"
                                   Content="{Binding Source={StaticResource Lang}, XPath=h15}" Name="ChkQuietLoading"
                                   ToolTip="{Binding Source={StaticResource Lang}, XPath=tt5}"/>
+
+                        <!-- notification settings -->
+                        <Button Grid.Row="5"
+                                Grid.Column="0"
+                                Grid.ColumnSpan="4"
+                                Style="{DynamicResource ModPlusFlatButton}"
+                                HorizontalAlignment="Stretch"
+                                Command="{Binding Path=NotificationSettingsCommand}"
+                                Margin="0">
+                            <StackPanel Orientation="Horizontal">
+                                <Viewbox Width="24" Height="24" Margin="0 0 10 0">
+                                    <Canvas Width="24" Height="24">
+                                        <Path Data="M21,19V20H3V19L5,17V11C5,7.9 7.03,5.17 10,4.29C10,4.19 10,4.1 10,4A2,2 0 0,1 12,2A2,2 0 0,1 14,4C14,4.1 14,4.19 14,4.29C16.97,5.17 19,7.9 19,11V17L21,19M14,21A2,2 0 0,1 12,23A2,2 0 0,1 10,21" 
+                                              Fill="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType=Button}, Path=Foreground}" />
+                                    </Canvas>
+                                </Viewbox>
+                                <TextBlock Text="{Binding Source={StaticResource LangApi}, XPath=h55}"
+                                           VerticalAlignment="Center"/>
+                            </StackPanel>
+                        </Button>
                     </Grid>
                 </GroupBox>
 
