@@ -532,22 +532,33 @@
                     string.Empty,
                     string.Empty,
                     "help/userinfo"));
-
-            ribRowPanel.Items.Add(
-                RibbonHelpers.AddBigButton(
-                "mpSettings",
-                Language.GetItem(LangItem, "h12"),
-                _colorTheme == 1
-                    ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/HelpBt.png"
-                    : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/HelpBt_dark.png",
-                Language.GetItem(LangItem, "h41"),
-                Orientation.Vertical,
-                Language.GetItem(LangItem, "h42"),
-                string.Empty,
-                "help/mpsettings"));
+            
             ribSourcePanel.Items.Add(ribRowPanel);
 
             ribRowPanel = new RibbonRowPanel();
+            
+            ribRowPanel.Items.Add(
+                RibbonHelpers.AddSmallButton(
+                    "mpSettings",
+                    Language.GetItem(LangItem, "h12"),
+                    GetSmallIcon("mpSettings"),
+                    Language.GetItem(LangItem, "h41"),
+                    Language.GetItem(LangItem, "h42"),
+                    string.Empty, 
+                    "help/mpsettings"));
+            
+            ribRowPanel.Items.Add(
+                RibbonHelpers.AddSmallButton(
+                    "mpFeedback",
+                    Language.GetItem("ModPlusAPI", "f1"),
+                    GetSmallIcon("mpFeedback"),
+                    Language.GetItem("ModPlusAPI", "f20"),
+                    Language.GetItem("ModPlusAPI", "f21"),
+                    string.Empty, 
+                    "help/feedback"));
+            
+            ribRowPanel.Items.Add(new RibbonRowBreak());
+            
             if (LoadPluginsHelper.HasStampsPlugin(_colorTheme, out var fieldsIcon, out var signaturesIcon))
             {
                 ribRowPanel.Items.Add(
@@ -577,26 +588,30 @@
                 RibbonHelpers.AddSmallButton(
                     "mpShowProductIcons",
                     Language.GetItem(LangItem, "h46"),
-                    _colorTheme == 1
-                        ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcons_16x16.png"
-                        : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcons_16x16_dark.png",
+                    GetSmallIcon("mpShowProductIcons"),
                     Language.GetItem(LangItem, "h37"),
                     Language.GetItem(LangItem, "h38"),
-                    $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcon.png", "help/mpsettings"));
+                    $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpShowProductIcon.png",
+                    "help/mpsettings"));
             
             ribRowPanel.Items.Add(
                 RibbonHelpers.AddSmallButton(
                     "mpHideProductIcons",
                     Language.GetItem(LangItem, "h47"),
-                    _colorTheme == 1
-                        ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpHideProductIcons_16x16.png"
-                        : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/mpHideProductIcons_16x16_dark.png",
+                    GetSmallIcon("mpHideProductIcons"),
                     Language.GetItem(LangItem, "h39"),
                     string.Empty,
                     string.Empty, 
                     "help/mpsettings"));
             
             ribSourcePanel.Items.Add(ribRowPanel);
+        }
+
+        private static string GetSmallIcon(string command)
+        {
+            return _colorTheme == 1
+                ? $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/{command}_16x16.png"
+                : $"pack://application:,,,/Modplus_{VersionData.CurrentCadVersion};component/Resources/{command}_16x16_dark.png";
         }
     }
 }

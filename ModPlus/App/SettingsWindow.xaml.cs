@@ -12,6 +12,7 @@
         {
             InitializeComponent();
             Title = ModPlusAPI.Language.GetItem("AutocadDlls", "h1");
+            ModPlusAPI.Language.SetLanguageProviderForResourceDictionary(Resources, "LangApi");
         }
     }
 }
