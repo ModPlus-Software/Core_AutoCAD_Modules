@@ -70,8 +70,8 @@
             {
                 foreach (ListBoxItem item in Drawings.Items)
                 {
-                    if (item.Content.Equals(Path.GetFileName(_docs.MdiActiveDocument.Name)) &
-                        item.ToolTip.Equals(_docs.MdiActiveDocument.Name))
+                    if (item.Content.Equals(Path.GetFileName(_docs.MdiActiveDocument?.Name)) &
+                        item.ToolTip.Equals(_docs.MdiActiveDocument?.Name))
                         Drawings.SelectedItem = item;
                 }
             }

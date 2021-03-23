@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk.WindowsDesktop">
 
   <PropertyGroup>
-    <Version>6.3.0.0</Version>
+    <Version>6.4.0.0</Version>
     <RootNamespace>ModPlus</RootNamespace>
     <AssemblyName>$(RootNamespace)</AssemblyName>
   </PropertyGroup>
@@ -74,9 +74,14 @@
     <Description>2020</Description>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(Configuration)' == 'A2021' or '$(Configuration)'=='Debug'">
+  <PropertyGroup Condition="'$(Configuration)' == 'A2021'">
     <TargetFramework>net47</TargetFramework>
     <Description>2021</Description>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)' == 'A2022' or '$(Configuration)'=='Debug'">
+    <TargetFramework>net48</TargetFramework>
+    <Description>2022</Description>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">
@@ -135,9 +140,14 @@
         <PackageReference Include="ModPlus.AutoCAD.API.2020" Version="1.0.0" ExcludeAssets="runtime" />
       </ItemGroup>
     </When>
-    <When Condition="'$(Configuration)'=='A2021' or '$(Configuration)'=='Debug'">
+    <When Condition="'$(Configuration)'=='A2021'">
       <ItemGroup>
         <PackageReference Include="ModPlus.AutoCAD.API.2021" Version="1.0.0" ExcludeAssets="runtime" />
+      </ItemGroup>
+    </When>
+    <When Condition="'$(Configuration)'=='A2022' or '$(Configuration)'=='Debug'">
+      <ItemGroup>
+        <PackageReference Include="ModPlus.AutoCAD.API.2022" Version="1.0.0" ExcludeAssets="runtime" />
       </ItemGroup>
     </When>
   </Choose>
@@ -157,7 +167,7 @@
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" ExcludeAssets="runtime" />
     <PackageReference Include="ModPlus.ProductDatabase" Version="2.6.0" ExcludeAssets="runtime" />
     <PackageReference Include="ModPlusAPI" Version="6.9.0" ExcludeAssets="runtime" />
-    <PackageReference Include="ModPlusStyle" Version="3.7.1" ExcludeAssets="runtime" />
+    <PackageReference Include="ModPlusStyle" Version="3.8.0" ExcludeAssets="runtime" />
     <PackageReference Include="StyleCop.Analyzers" Version="1.1.118">
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
