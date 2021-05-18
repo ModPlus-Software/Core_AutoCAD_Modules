@@ -12,17 +12,20 @@
     using AcApp = Autodesk.AutoCAD.ApplicationServices.Core.Application;
 
     /// <summary>
-    /// Функции вставки/добавления в автокад
+    /// Функции вставки/добавления в AutoCAD
     /// </summary>
     [PublicAPI]
     public class InsertToAutoCad
     {
         private const string LangItem = "AutocadDlls";
 
-        /// <summary>Вставить строковое значение в ячейку таблицы автокада</summary>
+        /// <summary>
+        /// Вставить строковое значение в ячейку таблицы AutoCAD
+        /// </summary>
         /// <param name="firstStr">Первая строка. Замена разделителя действует только для неё</param>
         /// <param name="secondString">Вторая строка. Необязательно. Замена разделителя не действует</param>
-        /// <param name="useSeparator">Использовать разделитель (для цифровых значений). Заменяет запятую на точку, а затем на текущий разделитель</param>
+        /// <param name="useSeparator">Использовать разделитель (для цифровых значений).
+        /// Заменяет запятую на точку, а затем на текущий разделитель</param>
         public static void AddStringToAutoCadTableCell(string firstStr, string secondString, bool useSeparator)
         {
             try
@@ -95,7 +98,9 @@
             }
         }
         
-        /// <summary>Вставка элемента спецификации в строку таблицы AutoCad с выбором таблицы и указанием строки</summary>
+        /// <summary>
+        /// Вставка элемента спецификации в строку таблицы AutoCAD с выбором таблицы и указанием строки
+        /// </summary>
         /// <param name="specificationItemForTable">Экземпляр вспомогательного элемента для заполнения строительной спецификации</param>
         public static void AddSpecificationItemToTableRow(SpecificationItemForTable specificationItemForTable)
         {
@@ -144,20 +149,27 @@
             }
         }
 
-        /// <summary>Вставка элемента спецификации в указанную строку выбранной таблицы AutoCad</summary>
+        /// <summary>
+        /// Вставка элемента спецификации в указанную строку выбранной таблицы AutoCAD
+        /// </summary>
         /// <param name="specificationItemForTable">Экземпляр вспомогательного элемента для заполнения строительной спецификации</param>
         /// <param name="table">Таблица AutoCAD</param>
         /// <param name="rowNumber">Номер строки для вставки элемента спецификации</param>
         /// <remarks>Метод нужно вызывать внутри открытой транзакции и открытой на запись таблицы</remarks>
-        public static void AddSpecificationItemToTableRow(SpecificationItemForTable specificationItemForTable,Table table, int rowNumber)
+        public static void AddSpecificationItemToTableRow(
+            SpecificationItemForTable specificationItemForTable, Table table, int rowNumber)
         {
             TableHelpers.AddSpecificationItemToTableRow(table, rowNumber, specificationItemForTable);
         }
 
-        /// <summary>Вставка нескольких элементов спецификации в таблицу AutoCAD с выбором таблицы</summary>
-        /// <param name="specificationItemsForTable">Список экземпляров вспомогательного элемента для заполнения строительной спецификации</param>
+        /// <summary>
+        /// Вставка нескольких элементов спецификации в таблицу AutoCAD с выбором таблицы
+        /// </summary>
+        /// <param name="specificationItemsForTable">Список экземпляров вспомогательного элемента для заполнения
+        /// строительной спецификации</param>
         /// <param name="askForSelectRow">Указание пользователем строки, с которой начинается заполнение</param>
-        /// <remarks>Метод проверяет в таблице наличие нужного количества пустых строк и в случае их нехватки добавляет новые</remarks>
+        /// <remarks>Метод проверяет в таблице наличие нужного количества пустых строк и в случае их нехватки
+        /// добавляет новые</remarks>
         public static void AddSpecificationItemsToTable(
             List<SpecificationItemForTable> specificationItemsForTable,
             bool askForSelectRow)
@@ -506,8 +518,7 @@
         public static bool CheckColumnsCount(int columns, int need)
         {
             return columns == need || MessageBox.ShowYesNo(
-                       Language.GetItem(LangItem, "msg17"),
-                       MessageBoxIcon.Question);
+                Language.GetItem(LangItem, "msg17"), MessageBoxIcon.Question);
         }
 
         public static void CheckAndAddRowCount(Table table, int startRow, int sItemsCount, out int firstEmptyRow)
@@ -610,9 +621,6 @@
                             table.Cells[i, j].IsMergeAllEnabled = false;
                         }
                     }
-
-                    // Разбиваем ячейки
-                    // table.UnmergeCells(
                 }
             }
 
@@ -667,10 +675,12 @@
 
                         // Масса
                         table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
+                        
+                        // Примечание
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
                     }
                 }
-
-                if (table.TableStyleName.Equals("Mp_GOST_P_21.1101_F8"))
+                else if (table.TableStyleName.Equals("Mp_GOST_P_21.1101_F8"))
                 {
                     // Позиция
                     table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
@@ -686,9 +696,11 @@
 
                     // Масса
                     table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
-                }
 
-                if (table.TableStyleName.Equals("Mp_GOST_21.501_F7"))
+                    // Примечание
+                    table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                }
+                else if (table.TableStyleName.Equals("Mp_GOST_21.501_F7"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 4))
                     {
@@ -705,8 +717,7 @@
                         table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Mass.Trim();
                     }
                 }
-
-                if (table.TableStyleName.Equals("Mp_GOST_21.501_F8"))
+                else if (table.TableStyleName.Equals("Mp_GOST_21.501_F8"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 6))
                     {
@@ -723,8 +734,7 @@
                         table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
                     }
                 }
-
-                if (table.TableStyleName.Equals("Mp_GOST_2.106_F1"))
+                else if (table.TableStyleName.Equals("Mp_GOST_2.106_F1"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 7))
                     {
@@ -739,10 +749,12 @@
 
                         // Количество
                         table.Cells[rowNum, 5].TextString = specificationItemForTable.Count;
+                        
+                        // Примечание
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
                     }
                 }
-
-                if (table.TableStyleName.Equals("Mp_GOST_2.106_F1a"))
+                else if (table.TableStyleName.Equals("Mp_GOST_2.106_F1a"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 5))
                     {
@@ -757,6 +769,9 @@
 
                         // Количество
                         table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
+                        
+                        // Примечание
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
                     }
                 }
             }
@@ -812,6 +827,9 @@
 
                         // Масса
                         table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
+                        
+                        // Примечание
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
                     }
                 }
             }
