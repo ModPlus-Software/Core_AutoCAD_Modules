@@ -652,6 +652,13 @@
         public static void AddSpecificationItemToTableRow(
             Table table, int rowNum, InsertToAutoCad.SpecificationItemForTable specificationItemForTable)
         {
+            var position = specificationItemForTable.Position?.Trim() ?? string.Empty;
+            var designation = specificationItemForTable.Designation?.Trim() ?? string.Empty;
+            var name = specificationItemForTable.Name?.Trim() ?? string.Empty;
+            var count = specificationItemForTable.Count;
+            var mass = specificationItemForTable.Mass?.Trim() ?? string.Empty;
+            var note = specificationItemForTable.Note?.Trim() ?? string.Empty;
+            
             // Если это таблица ModPlus
             if (table.TableStyleName.Contains("Mp_"))
             {
@@ -661,117 +668,63 @@
                 {
                     if (CheckColumnsCount(table.Columns.Count, 6))
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Обозначение
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Designation.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
-
-                        // Масса
-                        table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
-                        
-                        // Примечание
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = designation;
+                        table.Cells[rowNum, 2].TextString = name;
+                        table.Cells[rowNum, 3].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 2].TextString = mass;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = note;
                     }
                 }
                 else if (table.TableStyleName.Equals("Mp_GOST_P_21.1101_F8"))
                 {
-                    // Позиция
-                    table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                    // Обозначение
-                    table.Cells[rowNum, 1].TextString = specificationItemForTable.Designation.Trim();
-
-                    // Наименование
-                    table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                    // Количество
-                    table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
-
-                    // Масса
-                    table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
-
-                    // Примечание
-                    table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                    table.Cells[rowNum, 0].TextString = position;
+                    table.Cells[rowNum, 1].TextString = designation;
+                    table.Cells[rowNum, 2].TextString = name;
+                    table.Cells[rowNum, 3].TextString = count;
+                    table.Cells[rowNum, table.Columns.Count - 2].TextString = mass;
+                    table.Cells[rowNum, table.Columns.Count - 1].TextString = note;
                 }
                 else if (table.TableStyleName.Equals("Mp_GOST_21.501_F7"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 4))
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Count;
-
-                        // Масса
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Mass.Trim();
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = name;
+                        table.Cells[rowNum, 2].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = mass;
                     }
                 }
                 else if (table.TableStyleName.Equals("Mp_GOST_21.501_F8"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 6))
                     {
-                        // Позиция
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Position.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
-
-                        // Масса
-                        table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
+                        table.Cells[rowNum, 1].TextString = position;
+                        table.Cells[rowNum, 2].TextString = name;
+                        table.Cells[rowNum, 3].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 2].TextString = mass;
                     }
                 }
                 else if (table.TableStyleName.Equals("Mp_GOST_2.106_F1"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 7))
                     {
-                        // Позиция
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Position.Trim();
-
-                        // Обозначение
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Designation.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 4].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 5].TextString = specificationItemForTable.Count;
-                        
-                        // Примечание
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                        table.Cells[rowNum, 2].TextString = position;
+                        table.Cells[rowNum, 3].TextString = designation;
+                        table.Cells[rowNum, 4].TextString = name;
+                        table.Cells[rowNum, 5].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = note;
                     }
                 }
                 else if (table.TableStyleName.Equals("Mp_GOST_2.106_F1a"))
                 {
                     if (CheckColumnsCount(table.Columns.Count, 5))
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Обозначение
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Designation.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
-                        
-                        // Примечание
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = designation;
+                        table.Cells[rowNum, 2].TextString = name;
+                        table.Cells[rowNum, 3].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = note;
                     }
                 }
             }
@@ -783,53 +736,28 @@
                 {
                     if (table.Columns.Count == 4)
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Count;
-
-                        // Масса
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Mass.Trim();
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = name;
+                        table.Cells[rowNum, 2].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = mass;
                     }
 
                     if (table.Columns.Count == 5)
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Обозначение
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Designation.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = designation;
+                        table.Cells[rowNum, 2].TextString = name;
+                        table.Cells[rowNum, 3].TextString = count;
                     }
 
                     if (table.Columns.Count >= 6)
                     {
-                        // Позиция
-                        table.Cells[rowNum, 0].TextString = specificationItemForTable.Position.Trim();
-
-                        // Обозначение
-                        table.Cells[rowNum, 1].TextString = specificationItemForTable.Designation.Trim();
-
-                        // Наименование
-                        table.Cells[rowNum, 2].TextString = specificationItemForTable.Name.Trim();
-
-                        // Количество
-                        table.Cells[rowNum, 3].TextString = specificationItemForTable.Count;
-
-                        // Масса
-                        table.Cells[rowNum, table.Columns.Count - 2].TextString = specificationItemForTable.Mass.Trim();
-                        
-                        // Примечание
-                        table.Cells[rowNum, table.Columns.Count - 1].TextString = specificationItemForTable.Note.Trim();
+                        table.Cells[rowNum, 0].TextString = position;
+                        table.Cells[rowNum, 1].TextString = designation;
+                        table.Cells[rowNum, 2].TextString = name;
+                        table.Cells[rowNum, 3].TextString = count;
+                        table.Cells[rowNum, table.Columns.Count - 2].TextString = mass;
+                        table.Cells[rowNum, table.Columns.Count - 1].TextString = note;
                     }
                 }
             }
