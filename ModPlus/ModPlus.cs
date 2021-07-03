@@ -127,7 +127,7 @@
                     WebLicenseServerClient.Instance.Start(SupportedProduct.AutoCAD);
 
                 // user info
-                AuthorizationOnStartup();
+                UserInfoService.ProductStartupAuthorization();
 
                 // tooltip hook
                 AcApp.PreTranslateMessage += AutoCadMessageHandler;
@@ -377,27 +377,7 @@
                 }
             }
         }
-
-        private static async void AuthorizationOnStartup()
-        {
-            try
-            {
-                await UserInfoService.GetUserInfoAsync();
-                var userInfo = UserInfoService.GetUserInfoResponseFromHash();
-                if (userInfo == null)
-                    return;
-
-                if (!userInfo.IsLocalData && !await ModPlusAPI.Web.Connection.HasAllConnectionAsync(3))
-                {
-                    ModPlusAPI.Variables.UserInfoHash = string.Empty;
-                }
-            }
-            catch (System.Exception exception)
-            {
-                ExceptionBox.Show(exception);
-            }
-        }
-
+        
         #region ToolTip Hook
 
 //// ReSharper disable InconsistentNaming
